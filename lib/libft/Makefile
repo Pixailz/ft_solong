@@ -1,0 +1,146 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
+#    Updated: 2022/05/06 18:38:35 by brda-sil         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# **************************************************************************** #
+# config
+CFLAGS			:= -Wall -Wextra -Werror
+NAME			:= libft.a
+RM				:= rm -rf
+CC				:= gcc
+NASM			:= nasm
+PADDING			:= 30
+
+# DIR
+BIN_DIR			:= bin
+SRC_DIR			:= src
+INC_DIR			:= includes
+OBJ_DIR			:= obj
+TEST_DIR		:= tmp
+
+# SRC
+SRC_C			:= $(wildcard $(SRC_DIR)/*.c)
+SRC_A			:= $(wildcard $(SRC_DIR)/*.s)
+
+# OBJ
+OBJ_C			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC_C:%.c=%.o))
+OBJ_A			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC_A:%.s=%.o))
+
+# LIB DIR
+CFLAGS			+= -I$(INC_DIR)
+
+#  Bash Color
+green			:= \033[38;5;82m
+blue			:= \033[38;5;75m
+red				:= \033[38;5;196m
+yellow			:= \033[38;5;226m
+
+blinking		:= \033[5m
+reset			:= \033[0m
+
+font_color		:= $(blue)
+bold			:= $(green)
+ascii_color		:= $(bold)
+
+# **************************************************************************** #
+
+# **************************************************************************** #
+# utils
+
+define ascii_art
+██╗     ██╗██████╗ ███████╗████████╗
+██║     ██║██╔══██╗██╔════╝╚══██╔══╝
+██║     ██║██████╔╝█████╗     ██║
+██║     ██║██╔══██╗██╔══╝     ██║
+███████╗██║██████╔╝██║        ██║
+╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝
+$(reset)
+endef
+export ascii_art
+
+# **************************************************************************** #
+
+# **************************************************************************** #
+# Building rules
+
+all:			setup $(NAME)
+
+$(OBJ_DIR)/%.o: 		$(SRC_DIR)/%.c
+	@printf "   $(font_color)[$(green)+$(font_color)] Creation of $(bold)$<"
+	$(eval OBJ_LEN := $(shell printf $^ | wc -c))
+	$(eval PAD_LEN := $(shell expr $(PADDING) - $(OBJ_LEN)))
+	@printf "%-$(PAD_LEN)s" " "
+	@printf "$(blinking)$(font_color)-> $(reset)$(bold)$@ $(reset)"
+	@printf "%-30s" " "
+	@printf "\n"
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+$(OBJ_DIR)/%.o: 		$(SRC_DIR)/%.s
+	@printf "   $(font_color)[$(green)+$(font_color)] Creation of $(bold)$<"
+	$(eval OBJ_LEN := $(shell printf $^ | wc -c))
+	$(eval PAD_LEN := $(shell expr $(PADDING) - $(OBJ_LEN)))
+	@printf "%-$(PAD_LEN)s" " "
+	@printf "$(blinking)$(font_color)-> $(reset)$(bold)$@ $(reset)"
+	@printf "%-30s" " "
+	@printf "\n"
+	@$(NASM) -f elf64 -o $@ $<
+
+$(NAME):				$(OBJ_C) $(OBJ_A)
+	@printf "$(font_color)[$(green)+$(font_color)] Creation of $(bold)$(NAME)$(reset)\n"
+	@ar rcs $(NAME) $(OBJ_C) $(OBJ_A)
+
+setup:					call_logo $(OBJ_DIR)
+
+$(OBJ_DIR):
+	@printf "$(font_color)[$(green)+$(font_color)] Creation of $(bold)$(OBJ_DIR)$(reset)\n"
+	@mkdir -p $(OBJ_DIR)
+
+clean:
+	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(OBJ_DIR)$(reset)\n"
+	@$(RM) $(OBJ_DIR)
+
+fclean:					clean clean_tmp
+	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(NAME)$(reset)\n"
+	@$(RM) $(NAME) $(LIBSHARE)
+	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(BIN_DIR)$(reset)\n"
+	@$(RM) $(BIN_DIR)
+
+re:						call_logo fclean $(OBJ_DIR) all
+
+so: $(OBJ_C) $(OBJ_A)
+	gcc -nostartfiles -shared -o libft.so $(OBJ_C) $(OBJ_A)
+
+$(TEST_DIR):
+	@printf "$(font_color)[$(green)+$(font_color)] Creation of $(bold)$(TEST_DIR)$(reset)\n"
+	@mkdir -p $(TEST_DIR)
+
+clean_tmp:
+	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(TEST_DIR)$(reset)\n"
+	@$(RM) $(TEST_DIR)
+
+test:				clean_tmp $(TEST_DIR)
+ifneq ($(SRC_A),)
+	@printf "$(font_color)[$(green)+$(font_color)] Copy of $(bold)all assembly sources$(font_color) in $(bold)$(TEST_DIR)$(reset)\n"
+	@cp $(SRC_A) $(TEST_DIR)
+endif
+	@printf "$(font_color)[$(green)+$(font_color)] Copy of $(bold)all c sources$(font_color) in $(bold)$(TEST_DIR)$(reset)\n"
+	@cp $(SRC_C) $(TEST_DIR)
+	@printf "$(font_color)[$(green)+$(font_color)] Copy of $(bold)includes.h$(font_color) in $(bold)$(TEST_DIR)$(reset)\n"
+	@cp $(INC_DIR)/* $(TEST_DIR)
+	@printf "$(font_color)[$(green)+$(font_color)] Copy of $(bold)Makefile$(font_color) in $(bold)$(TEST_DIR)$(reset)\n"
+	@cp Makefile.test $(TEST_DIR)/Makefile
+
+call_logo:
+	@printf "$(ascii_color)$$ascii_art"
+
+.PHONY:					all clean fclean re setup lib call_logo so test
+
+# **************************************************************************** #

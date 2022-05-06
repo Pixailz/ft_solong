@@ -1,0 +1,61 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile.test                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: brda-sil <brda-sil@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
+#    Updated: 2022/04/30 18:55:28 by brda-sil         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# **************************************************************************** #
+# config
+CFLAGS			:= -Wall -Wextra -Werror -fPIC
+NAME			:= libft.a
+RM				:= rm -rf
+CC				:= gcc
+NASM			:= nasm
+PADDING			:= 30
+
+# SRC
+SRC_C			:= $(wildcard *.c)
+SRC_A			:= $(wildcard *.s)
+
+# OBJ
+OBJ_C			:= $(SRC_C:%.c=%.o)
+OBJ_A			:= $(SRC_A:%.s=%.o)
+
+# **************************************************************************** #
+
+# **************************************************************************** #
+# Building rules
+
+all:			$(NAME)
+
+%.o: 		%.c
+
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+%.o: 		%.s
+	$(NASM) -f elf64 -o $@ $<
+
+$(NAME): $(OBJ_C) $(OBJ_A)
+	ar rcs $(NAME) $(OBJ_C) $(OBJ_A)
+
+clean:
+	$(RM) $(OBJ_C)
+	$(RM) $(OBJ_A)
+
+fclean:					clean
+	$(RM) $(NAME) $(LIBSHARE)
+
+re:						fclean $(NAME)
+
+so:	$(OBJ_C) $(OBJ_A)
+	gcc -nostartfiles -shared -o libft.so $(OBJ_C) $(OBJ_A)
+
+.PHONY:					all clean fclean re so
+
+# **************************************************************************** #
