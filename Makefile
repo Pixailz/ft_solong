@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/06 21:11:12 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/09 16:49:40 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ export ascii_art
 
 # **************************************************************************** #
 # config
-CFLAGS			:= -Wall -Wextra -Werror -lmlx -lXext -lX11 #-g
+CFLAGS			:= -Wall -Wextra -Werror #-g
 TARGET			:= so_long
 RM				:= rm -rf
 CC				:= gcc
@@ -69,6 +69,8 @@ LIBFT			:= $(LIB_DIR)/libft/libft.a
 FT_PRINTF		:= $(LIB_DIR)/ft_printf/ft_printf.a
 MINI_LIBX		:= $(LIB_DIR)/minilibx-linux/libmlx_Linux.a
 
+LDFLAGS			:= -Llib/minilibx-linux -L/usr/lib -lXext -lX11 -lm -lbsd -lz
+
 # SRC
 SRC_C			:= $(wildcard $(SRC_DIR)/*.c)
 
@@ -77,8 +79,7 @@ OBJ_C			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC_C:%.c=%.o))
 
 # LIB DIR
 CFLAGS			+= $(INC_DIR)
-LIBS			:= $(FT_PRINTF) $(LIBFT) $(MINI_LIBX)
-
+LIBS			:= $(FT_PRINTF) $(LIBFT) $(MINI_LIBX)  -Llib/minilibx-linux
 # **************************************************************************** #
 
 # **************************************************************************** #
@@ -106,7 +107,7 @@ $(MINI_LIBX):
 
 $(TARGET):				$(LIBFT) $(FT_PRINTF) $(MINI_LIBX) $(OBJ_C)
 	@printf "$(font_color)[$(green)+$(font_color)] Creation of $(bold)$@$(reset)\n"
-	@$(CC) -o $@ $(OBJ_C) $(LIBS)
+	@$(CC) $(CFLAGS) -o $@ $(OBJ_C) $(LIBS) $(LDFLAGS)
 
 setup:					call_logo $(OBJ_DIR) $(BIN_DIR)
 
