@@ -12,6 +12,7 @@
 
 #  Bash Color
 
+get_random		= $(shell seq 0 256 | shuf | head -n1)
 green			:= \033[38;5;82m
 blue			:= \033[38;5;75m
 red				:= \033[38;5;196m
@@ -20,9 +21,13 @@ yellow			:= \033[38;5;226m
 blinking		:= \033[5m
 reset			:= \033[0m
 
-font_color		:= $(blue)
-bold			:= $(green)
-ascii_color		:= $(bold)
+#font_color		:= $(blue)
+#bold			:= $(green)
+#ascii_color		:= $(bold)
+
+font_color		:= \033[38;5;$(get_random)m
+bold			:= \033[38;5;$(get_random)m
+ascii_color		:= \033[38;5;$(get_random)m
 
 # **************************************************************************** #
 
