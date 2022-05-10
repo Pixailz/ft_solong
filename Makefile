@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/09 16:49:40 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/10 18:57:45 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,21 +127,27 @@ $(BIN_DIR):
 	@printf "$(font_color)[$(green)+$(font_color)] Creation of $(bold)$(BIN_DIR)$(reset)\n"
 	@mkdir -p $(BIN_DIR)
 
-clean:
-	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(OBJ_DIR)$(reset)\n"
-	@$(RM) $(OBJ_DIR)
+clean_lib:
 	@$(MAKE) lib/libft clean
 	@$(MAKE) lib/ft_printf clean
 	@$(MAKE) lib/minilibx-linux clean
 
+clean:
+	$(call clean_lib)
+	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(OBJ_DIR)$(reset)\n"
+	@$(RM) $(OBJ_DIR)
+
+fclean_lib:
+	@$(MAKE) lib/libft fclean
+	@$(MAKE) lib/ft_printf fclean
+	@$(MAKE) lib/minilibx-linux clean
+
 fclean:					clean
+	$(call fclean_lib)
 	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(TARGET)$(reset)\n"
 	@$(RM) $(TARGET)
 	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(BIN_DIR)$(reset)\n"
 	@$(RM) -rf $(BIN_DIR)
-	@$(MAKE) lib/libft fclean
-	@$(MAKE) lib/ft_printf fclean
-	@$(MAKE) lib/minilibx-linux clean
 
 re_lib:
 	@$(MAKE) lib/libft re
@@ -150,6 +156,7 @@ re_lib:
 
 
 re:						fclean re_lib all
+rre:					fclean all
 
 .PHONY:					all clean fclean re setup lib call_logo $(TARGETS)
 
