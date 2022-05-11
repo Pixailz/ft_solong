@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:16:35 by stales            #+#    #+#             */
-/*   Updated: 2022/05/02 23:40:06 by sam              ###   ########.fr       */
+/*   Updated: 2022/05/12 01:12:59 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-
+int				ft_error(char *msg);
 char			**ft_split(char const *s, char c);
 void			*ft_calloc(size_t nmemb, size_t size);
 void			*ft_memchr(const void *s, int c, size_t n);
@@ -88,5 +88,6 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 void			ft_split_free(char **strarr);
+char			*ft_memjoin(char *s1, char *s2);
 
 #endif

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                    	:+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stales <stales@student.42.angouleme.fr>    +#+  +:+       +#+        */
+/*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 18:54:19 by stales            #+#    #+#             */
-/*   Updated: 2022/04/19 21:30:29 by stales           ###   ########.fr       */
+/*   Created: 2022/04/16 15:16:23 by brda-sil          #+#    #+#             */
+/*   Updated: 2022/05/12 00:16:34 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-int	ft_putchar(char c)
+int	ft_strlenn(char *s)
 {
-	return (write(1, &c, 1));
+	char	*t;
+
+	if (!s)
+		return (0);
+	t = s;
+	while (*t)
+		t++;
+	return (t - s);
 }

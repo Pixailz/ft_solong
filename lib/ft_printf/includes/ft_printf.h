@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:53:46 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/04/23 18:33:29 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 00:15:16 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	ft_putchar(char c);
 int	ft_putnbr(int n);
 int	ft_putnbr_u(unsigned int n);
 int	ft_puthex(unsigned long n, char format);
-int	ft_strlen(char *s);
+int	ft_strlenn(char *s);
 
 #endif

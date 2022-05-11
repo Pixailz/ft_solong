@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/10 18:56:08 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 01:18:51 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "mlx.h"
+# include "get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
 
