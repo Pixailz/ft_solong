@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/10 18:50:47 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/11 22:50:43 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 t_img	*texture_load(t_main *config, char *path)
 {
-	t_img	*tmp;
+	void	*tmp;
+	int		i;
 
-	tmp = malloc(sizeof(t_img));
-	tmp->img = mlx_xpm_file_to_image(config->mlx, path, \
-									&tmp->width, &tmp->height);
-	if (!tmp->img)
+	tmp = mlx_xpm_file_to_image(config->mlx, path, &i, &i);
+	if (!tmp)
 	{
 		ft_printf("ERROR: %s not found\n", path);
 		exit(-1);
@@ -29,8 +28,8 @@ t_img	*texture_load(t_main *config, char *path)
 
 void	init_texture(t_main *config, t_textures *textures)
 {
-	textures->character = texture_load(config, "./imgs/character.xpm");
-	textures->wall = texture_load(config, "./imgs/wall.xpm");
+	textures->character = texture_load(config, "./img/character.xpm");
+	textures->wall = texture_load(config, "./img/wall.xpm");
 }
 
 void	init_main(t_main *config, int height, int width, char *title)
