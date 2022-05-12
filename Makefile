@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/12 05:55:39 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/12 14:25:36 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,23 +132,23 @@ $(BIN_DIR):
 	@printf "$(font_color)[$(green)+$(font_color)] Creation of $(bold)$(BIN_DIR)$(reset)\n"
 	@mkdir -p $(BIN_DIR)
 
-clean_lib:
+clean_lib:				clean
 	@$(MAKE) lib/libft clean
 	@$(MAKE) lib/ft_printf clean
 	@$(MAKE) lib/minilibx-linux clean
 	@$(MAKE) lib/gnl clean
 
-clean:					clean_lib
+clean:
 	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(OBJ_DIR)$(reset)\n"
 	@$(RM) $(OBJ_DIR)
 
-fclean_lib:
+fclean_lib:				fclean
 	@$(MAKE) lib/libft fclean
 	@$(MAKE) lib/ft_printf fclean
 	@$(MAKE) lib/minilibx-linux clean
 	@$(MAKE) lib/gnl fclean
 
-fclean:					fclean_lib clean
+fclean:					clean
 	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(TARGET)$(reset)\n"
 	@$(RM) $(TARGET)
 	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(BIN_DIR)$(reset)\n"
@@ -160,7 +160,7 @@ re_lib:
 	@$(MAKE) lib/minilibx-linux re
 	@$(MAKE) lib/gnl re
 
-re:						fclean re_lib all
+re:						fclean_lib clean_lib all
 
 rre:					fclean all
 
