@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 05:54:10 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:15:27 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	free_entry_point(t_main *config, t_textures *textures)
 	free_texture(config, textures->ground);
 	free_texture(config, textures->door_close);
 	free_texture(config, textures->door_open);
+	free_texture(config, textures->key);
 	free_map(config->map);
 	mlx_destroy_window(config->mlx, config->win);
 	mlx_destroy_display(config->mlx);

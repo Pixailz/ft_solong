@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/12 14:25:36 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/12 14:29:37 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ export ascii_art
 
 # **************************************************************************** #
 # config
-CFLAGS			:= -Wall -Wextra -Werror #-g
+CFLAGS			:= -Wall -Wextra -Werror -g
 TARGET			:= so_long
 RM				:= rm -rf
 CC				:= gcc
@@ -160,9 +160,9 @@ re_lib:
 	@$(MAKE) lib/minilibx-linux re
 	@$(MAKE) lib/gnl re
 
-re:						fclean_lib clean_lib all
+re:						fclean all
 
-rre:					fclean all
+rre:					fclean_lib clean_lib all
 
 .PHONY:					all clean fclean re setup lib call_logo
 

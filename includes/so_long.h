@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 05:55:08 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:40:00 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WIN_HEIGHT 640
 # define WIN_WIDTH 320
 # define WIN_TITLE "SO LONG..."
-# define BLOCK_SIZE 32
+# define POINT_SIZE 32
 # define GOOD_POINT "10EPC"
 
 // STRUCTURES
