@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 04:27:56 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 05:20:45 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 05:52:29 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	count_point(t_main *config, char point)
 	if (point == '1')
 		config->nb_wall++;
 	else if (point == '0')
-		config->nb_void++;
+		config->nb_ground++;
 	else if (point == 'E')
 		config->nb_door++;
 	else if (point == 'P')
 		config->nb_player++;
 	else if (point == 'C')
-		config->nb_coin++;
+		config->nb_key++;
 }
 
 int	check_wrong_point(t_main *config)

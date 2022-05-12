@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 05:00:55 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 05:55:08 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@
 
 // STRUCTURES
 typedef struct s_textures {
-	void	*character;
+	void	*player;
 	void	*wall;
 	void	*ground;
 	void	*door_open;
 	void	*door_close;
+	void	*key;
 }				t_textures;
 
 typedef struct s_main {
@@ -42,10 +43,10 @@ typedef struct s_main {
 	int		width;
 	int		height;
 	int		nb_wall;
-	int		nb_void;
+	int		nb_ground;
 	int		nb_player;
 	int		nb_door;
-	int		nb_coin;
+	int		nb_key;
 }				t_main;
 
 // init.c
@@ -63,7 +64,13 @@ int		check_ext(char *file_name);
 void	parse_map(t_main *config, char *file_name);
 char	*get_all_file(char *file_name);
 
-// check_map.c
+// map_check.c
 void	check_map(t_main *config, t_textures *textures);
+int		check_wrong_point(t_main *config);
+void	count_point(t_main *config, char point);
+int		check_width(t_main *config);
 
+// draw.c
+void	draw_map(t_main *config, t_textures *textures);
+void	draw_block(t_textures *textures, t_main *config, int x, int y);
 #endif

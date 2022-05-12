@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 05:01:42 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 05:52:18 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ void	*texture_load(t_main *config, char *path)
 
 void	init_texture(t_main *config, t_textures *textures)
 {
-	textures->character = texture_load(config, "resources/img/character.xpm");
+	textures->player = texture_load(config, "resources/img/player.xpm");
 	textures->wall = texture_load(config, "resources/img/wall.xpm");
 	textures->ground = texture_load(config, "resources/img/ground.xpm");
 	textures->door_close = texture_load(config, "resources/img/door_open.xpm");
 	textures->door_open = texture_load(config, "resources/img/door_close.xpm");
+	textures->key = texture_load(config, "resources/img/key.xpm");
 }
 
 void	init_main(t_main *config, int height, int width, char *title)
@@ -40,10 +41,10 @@ void	init_main(t_main *config, int height, int width, char *title)
 	config->mlx = mlx_init();
 	config->win = mlx_new_window(config->mlx, height, width, title);
 	config->nb_wall = 0;
-	config->nb_void = 0;
+	config->nb_ground = 0;
 	config->nb_player = 0;
 	config->nb_door = 0;
-	config->nb_coin = 0;
+	config->nb_key = 0;
 }
 
 void	init_entry_point(t_main *config, t_textures *textures)
