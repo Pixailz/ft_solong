@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 14:40:00 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 19:30:59 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define WIN_HEIGHT 640
-# define WIN_WIDTH 320
 # define WIN_TITLE "SO LONG..."
-# define POINT_SIZE 32
+# define BLOCK_SIZE 32
 # define GOOD_POINT "10EPC"
 
 // STRUCTURES
@@ -42,8 +40,6 @@ typedef struct s_main {
 	char	**map;
 	int		width;
 	int		height;
-	int		nb_wall;
-	int		nb_ground;
 	int		nb_player;
 	int		nb_door;
 	int		nb_key;
@@ -52,7 +48,7 @@ typedef struct s_main {
 // init.c
 void	*texture_load(t_main *config, char *path);
 void	init_texture(t_main *config, t_textures *textures);
-void	init_main(t_main *config, int height, int width, char *title);
+void	init_main(t_main *config, char *title);
 void	init_entry_point(t_main *config, t_textures *textures);
 
 // free.c
@@ -69,6 +65,9 @@ void	check_map(t_main *config, t_textures *textures);
 int		check_wrong_point(t_main *config);
 void	count_point(t_main *config, char point);
 int		check_width(t_main *config);
+
+// map_check_2.c
+int		check_minimum_point(t_main *config);
 
 // draw.c
 void	draw_map(t_main *config, t_textures *textures);

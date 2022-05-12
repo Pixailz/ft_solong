@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 00:58:51 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 18:31:49 by brda-sil         ###   ########.fr       */
+/*   Created: 2022/05/12 18:35:50 by brda-sil          #+#    #+#             */
+/*   Updated: 2022/05/12 18:38:11 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf/includes/ft_printf.h"
+#include "so_long.h"
 
-int	ft_error(char *msg)
+void	game_entry(t_main config, t_textures textures)
 {
-	ft_printf("Error\n%s\n", msg);
-	exit(1);
+	draw_map(&config, &textures);
 }

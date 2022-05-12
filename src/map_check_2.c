@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   map_check_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 00:58:51 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 18:31:49 by brda-sil         ###   ########.fr       */
+/*   Created: 2022/05/12 18:27:05 by brda-sil          #+#    #+#             */
+/*   Updated: 2022/05/12 18:32:45 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf/includes/ft_printf.h"
+#include "so_long.h"
 
-int	ft_error(char *msg)
+int	check_minimum_point(t_main *config)
 {
-	ft_printf("Error\n%s\n", msg);
-	exit(1);
+	if (config->nb_player != 1)
+		return (0);
+	if (config->nb_door < 1)
+		return (0);
+	if (config->nb_key < 1)
+		return (0);
+	return (1);
 }
