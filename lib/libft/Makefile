@@ -6,13 +6,13 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/12 00:08:54 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/12 05:20:23 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # **************************************************************************** #
 # config
-CFLAGS			:= -Wall -Wextra -Werror
+CFLAGS			:= -Wall -Wextra -Werror #-g
 NAME			:= libft.a
 RM				:= rm -rf
 CC				:= gcc
@@ -77,7 +77,6 @@ $(OBJ_DIR)/%.o: 		$(SRC_DIR)/%.c
 	$(eval PAD_LEN := $(shell expr $(PADDING) - $(OBJ_LEN)))
 	@printf "%-$(PAD_LEN)s" " "
 	@printf "$(blinking)$(font_color)-> $(reset)$(bold)$@ $(reset)"
-	@printf "%-30s" " "
 	@printf "\n"
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
@@ -87,7 +86,6 @@ $(OBJ_DIR)/%.o: 		$(SRC_DIR)/%.s
 	$(eval PAD_LEN := $(shell expr $(PADDING) - $(OBJ_LEN)))
 	@printf "%-$(PAD_LEN)s" " "
 	@printf "$(blinking)$(font_color)-> $(reset)$(bold)$@ $(reset)"
-	@printf "%-30s" " "
 	@printf "\n"
 	@$(NASM) -f elf64 -o $@ $<
 

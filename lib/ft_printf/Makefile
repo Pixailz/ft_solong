@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/06 18:41:37 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/12 03:01:25 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ export ascii_art
 
 # **************************************************************************** #
 # config
-CFLAGS			:= -Wall -Wextra -Werror -g
+CFLAGS			:= -Wall -Wextra -Werror #-g
 NAME			:= ft_printf.a
 RM				:= rm -rf
 CC				:= gcc

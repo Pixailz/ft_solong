@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:00:32 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/11 22:53:02 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/12 04:33:47 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@ int	main(int argc, char **argv)
 {
 	t_main		config;
 	t_textures	textures;
-	(void)		argv;
 
 	if (argc != 2)
 		ft_error("Not enought args");
-	//parse_map(config, argv[1]);
+	parse_map(&config, argv[1]);
 	init_entry_point(&config, &textures);
-	mlx_put_image_to_window(config.mlx, config.win, textures.wall, \
-							0, 0);
-	usleep(2000000);
+	check_map(&config, &textures);
+	usleep(200000);
 	free_entry_point(&config, &textures);
 	return (0);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 13:16:35 by stales            #+#    #+#             */
-/*   Updated: 2022/05/12 01:12:59 by brda-sil         ###   ########.fr       */
+/*   Created: 2022/02/22 13:16:35 by brda-sil          #+#    #+#             */
+/*   Updated: 2022/05/12 03:51:03 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,5 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 void			ft_split_free(char **strarr);
-char			*ft_memjoin(char *s1, char *s2);
 
 #endif

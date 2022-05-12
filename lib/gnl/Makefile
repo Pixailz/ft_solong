@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/12 00:28:45 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/12 05:20:11 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ export ascii_art
 
 # **************************************************************************** #
 # config
-CFLAGS			:= -Wall -Wextra -Werror -g
+CFLAGS			:= -Wall -Wextra -Werror #-g
 NAME			:= get_next_line.a
 RM				:= rm -rf
 CC				:= gcc
