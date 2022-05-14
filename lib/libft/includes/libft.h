@@ -6,20 +6,24 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:16:35 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/12 03:51:03 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:06:59 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+/* ########################################################################## */
+/* LIBRARY */
+/* ####### */
+
 # include <stddef.h>
 
-//////////////////////////////////////
-//
-//			TYPEDEFS
-//
-//////////////////////////////////////
+/* ########################################################################## */
+
+/* ########################################################################## */
+/* TYPEDEF */
+/* ####### */
 
 typedef unsigned char	t_uint8;
 typedef unsigned short	t_uint16;
@@ -27,11 +31,21 @@ typedef unsigned int	t_uint32;
 typedef unsigned long	t_uint64;
 typedef __uint128_t		t_uint128;
 
+/* ########################################################################## */
+/* STRUCT */
+/* ###### */
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+/* ########################################################################## */
+
+/* ########################################################################## */
+/* FILES */
+/* ##### */
 
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
@@ -88,5 +102,7 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 void			ft_split_free(char **strarr);
+
+/* ########################################################################## */
 
 #endif

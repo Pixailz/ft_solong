@@ -6,12 +6,33 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/12 05:20:11 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/14 16:00:49 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#  Bash Color
+# **************************************************************************** #
+# config
+CFLAGS			:= -Wall -Wextra -Werror #-g
+NAME			:= get_next_line.a
+RM				:= rm -rf
+CC				:= gcc
+PADDING			:= 30
 
+# DIR
+SRC_DIR			:= src
+INC_DIR			:= includes
+OBJ_DIR			:= obj
+
+# SRC
+SRC_C			:= $(wildcard $(SRC_DIR)/*.c)
+
+# OBJ
+OBJ_C			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC_C:%.c=%.o))
+
+# LIB DIR
+CFLAGS			+= -I$(INC_DIR)
+
+#  Bash Color
 green			:= \033[38;5;82m
 blue			:= \033[38;5;75m
 red				:= \033[38;5;196m
@@ -39,30 +60,6 @@ define ascii_art
 $(reset)
 endef
 export ascii_art
-
-# **************************************************************************** #
-
-# **************************************************************************** #
-# config
-CFLAGS			:= -Wall -Wextra -Werror #-g
-NAME			:= get_next_line.a
-RM				:= rm -rf
-CC				:= gcc
-PADDING			:= 30
-
-# DIR
-SRC_DIR			:= src
-INC_DIR			:= includes
-OBJ_DIR			:= obj
-
-# SRC
-SRC_C			:= $(wildcard $(SRC_DIR)/*.c)
-
-# OBJ
-OBJ_C			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC_C:%.c=%.o))
-
-# LIB DIR
-CFLAGS			+= -I$(INC_DIR)
 
 # **************************************************************************** #
 
