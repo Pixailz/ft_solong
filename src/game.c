@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:35:50 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:55:35 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 06:22:55 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	move_player(t_main *config, int x, int y)
 int	keypress(int keycode, t_main *config)
 {
 	if (keycode == KEY_ESC)
-		free_hook(config);
+		end_hook(config);
 	if (keycode == KEY_W || keycode == KEY_UP)
 		move_player(config, -1, 0);
 	if (keycode == KEY_A || keycode == KEY_LEFT)

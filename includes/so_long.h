@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:51:58 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 06:22:19 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,18 @@ typedef struct s_textures {
 typedef struct s_main {
 	void		*mlx;
 	void		*win;
+	int			width;
+	int			height;
 	t_textures	*textures;
 	int			texture_loaded;
 	char		**map;
 	char		**map_new;
+	int			is_map_new;
 	int			p_x;
 	int			p_y;
 	int			p_key;
 	int			p_win;
 	int			p_step;
-	int			width;
-	int			height;
 	int			nb_player;
 	int			nb_door;
 	int			nb_key;
@@ -117,7 +118,6 @@ void	put_image(t_main *config, void *img, int x, int y);
 // free.c
 void	free_texture(t_main *config, void *texture);
 void	free_entry_point(t_main *config);
-int		free_hook(t_main *config);
 void	free_map(t_main *config);
 void	free_map_new(t_main *config);
 
@@ -139,6 +139,7 @@ void	init_hook(t_main *config);
 int		check_minimum_point(t_main *config);
 void	exit_minimum_point(int return_code);
 int		check_is_wall(char block);
+int		end_hook(t_main *config);
 
 // map_check.c
 void	check_map(t_main *config);

@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:58:09 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 06:23:07 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_texture(t_main *config)
 
 void	init_hook(t_main *config)
 {
-	mlx_hook(config->win, 33, 1L << 17, free_hook, config);
+	mlx_hook(config->win, 33, 1L << 17, end_hook, config);
 	mlx_loop_hook(config->mlx, draw_map, config);
 	mlx_key_hook(config->win, keypress, config);
 }
@@ -73,6 +73,7 @@ void	init_main(t_main *config, char *title)
 	config->p_key = 0;
 	config->p_win = 0;
 	config->p_step = 0;
+	config->is_map_new = 0;
 	config->nb_player = 0;
 	config->nb_door = 0;
 	config->nb_key = 0;
