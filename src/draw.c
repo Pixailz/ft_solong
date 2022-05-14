@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:36:14 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 23:57:59 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,13 @@ void	draw_block(t_main *config, int x, int y)
 	else if (config->map_new[x][y] == 'e')
 		put_image(config, config->textures->door_open, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'P')
-		put_image(config, config->textures->player, y - 1, x - 1);
+		draw_player(config, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'C')
 		put_image(config, config->textures->key, y - 1, x - 1);
+	else if (config->map_new[x][y] == 'K')
+		draw_enemy(config, y - 1, x - 1);
+	else if (config->map_new[x][y] == 'k')
+		draw_enemy(config, y - 1, x - 1);
 	else
 		draw_block_wall(config, x, y);
 }
@@ -92,5 +96,11 @@ int	draw_map(t_main *config)
 		j = 0;
 		i++;
 	}
+	usleep(25 * 1000);
 	return (1);
 }
+
+/*
+	mlx_put_image_to_window(config->mlx, config->win, config->textures->health_1000, \
+							(config->p_y - 1) * BLOCK_SIZE, (config->p_x + 1) * BLOCK_SIZE);
+*/

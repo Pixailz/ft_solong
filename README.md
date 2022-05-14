@@ -5,6 +5,7 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 
 1. fix ft_error
 2. clean assembly from libft
+3. output the health on the screen
 
 ## sprite
 

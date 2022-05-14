@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 04:27:56 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 04:02:50 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:58:00 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	count_point(t_main *config, char point, int x, int y)
 		config->p_x = x + 1;
 		config->p_y = y + 1;
 	}
+	else if (point == 'K')
+		config->nb_enemy++;
 	else if (point == 'C')
 		config->nb_key++;
 }
