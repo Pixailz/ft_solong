@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:25:17 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:51:58 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # endif
 # define WIN_TITLE "SO LONG..."
 # define BLOCK_SIZE 32
+# define TITLE_PADDING 18
 # define GOOD_POINT "10EPC"
 
 # define KEY_W		0x77
@@ -88,6 +89,7 @@ typedef struct s_main {
 	int			p_y;
 	int			p_key;
 	int			p_win;
+	int			p_step;
 	int			width;
 	int			height;
 	int			nb_player;
@@ -120,11 +122,11 @@ void	free_map(t_main *config);
 void	free_map_new(t_main *config);
 
 // game.c
-void	game_entry(t_main *config);
 int		keypress(int keycode, t_main *config);
 void	move_player(t_main *config, int x, int y);
 int		check_move(t_main *config, char next_move);
 void	open_door(t_main *config);
+void	put_steps(t_main *config);
 
 // init.c
 void	*texture_load(t_main *config, char *path);

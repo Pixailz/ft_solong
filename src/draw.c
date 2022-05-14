@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:07:37 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:36:14 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	put_image(t_main *config, void *img, int x, int y)
 {
-	mlx_put_image_to_window(config->mlx, config->win, img, x * BLOCK_SIZE, \
-															y * BLOCK_SIZE);
+	mlx_put_image_to_window(config->mlx, config->win, img, \
+							x * BLOCK_SIZE, (y * BLOCK_SIZE) + TITLE_PADDING);
 }
 
 void	draw_wall_block_oriented(t_main *config, int x, int y)

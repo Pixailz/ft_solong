@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:35:50 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:16:56 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:49:59 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ int	check_move(t_main *config, char next_move)
 	return (1);
 }
 
+void	put_steps(t_main *config)
+{
+	char	*tmp;
+
+	ft_printf("player step: [%d]\n", config->p_step);
+	if (config->p_step)
+	{
+		tmp = ft_strjoin("player step : ", ft_itoa(config->p_step - 1));
+		mlx_string_put(config->mlx, config->win, \
+					0, 14, 0x000000, tmp);
+	}
+	tmp = ft_strjoin("player step : ", ft_itoa(config->p_step));
+	mlx_string_put(config->mlx, config->win, \
+					0, 14, 0xffffff, tmp);
+	free(tmp);
+}
+
 void	move_player(t_main *config, int x, int y)
 {
 	if (!check_move(config, config->map_new[config->p_x + x][config->p_y + y]))
@@ -55,6 +72,8 @@ void	move_player(t_main *config, int x, int y)
 	config->map_new[config->p_x][config->p_y] = '0';
 	config->p_x += x;
 	config->p_y += y;
+	config->p_step++;
+	put_steps(config);
 	if (config->p_win)
 		mlx_loop_end(config->mlx);
 }
