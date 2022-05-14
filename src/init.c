@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:36:05 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:58:09 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	init_main(t_main *config, char *title)
 	config->mlx = mlx_init();
 	config->win = mlx_new_window(config->mlx, \
 							config->width * BLOCK_SIZE, \
-							(config->height * BLOCK_SIZE) + TITLE_PADDING, title);
+							(config->height * BLOCK_SIZE) + TITLE_PADDING, \
+							title);
 	init_hook(config);
 	config->texture_loaded = 0;
 	config->p_key = 0;
