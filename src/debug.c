@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:20:57 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 15:00:41 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:37:51 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	debug_print_map_without_9(t_main *config)
 	{
 		while (j <= config->width - 1)
 		{
-			if (j != config->width - 1)
+			if (j == 0)
+				ft_printf("   %c", config->map_new[i + 1][j + 1]);
+			else if (j != config->width - 1)
 				ft_printf("%c", config->map_new[i + 1][j + 1]);
 			else
 				ft_printf("%c\n", config->map_new[i + 1][j + 1]);
@@ -32,7 +34,6 @@ void	debug_print_map_without_9(t_main *config)
 		j = 0;
 		i++;
 	}
-	ft_printf("\n");
 }
 
 void	debug_print_map_with_9(t_main *config)
@@ -55,7 +56,6 @@ void	debug_print_map_with_9(t_main *config)
 		j = 0;
 		i++;
 	}
-	ft_printf("\n");
 }
 
 void	debug_print_current_block(t_main *config, int x, int y)

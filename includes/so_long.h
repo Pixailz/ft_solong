@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 17:29:10 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:42:01 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 /* ###### */
 
 # ifndef DEBUG
-#  define DEBUG	1
+#  define DEBUG	0
 # endif
 
 // UI
@@ -125,6 +125,7 @@ typedef struct s_main {
 	int			map_new_loaded;
 	char		saved_block;
 	int			retry;
+	int			is_finished;
 	char		**map;
 	char		**map_new;
 	int			is_map_new;
@@ -185,9 +186,13 @@ void	free_texture_health(t_main *config);
 // game_duel.c
 void	duel(t_main *config);
 
+// game_move.c
+void	move_player_loop(t_main *config, int x, int y);
+void	move_player(t_main *config, int x, int y);
+
 // game.c
 int		keypress(int keycode, t_main *config);
-void	move_player(t_main *config, int x, int y);
+int		keyrelease(int keycode, t_main *config);
 void	open_door(t_main *config);
 void	put_steps(t_main *config);
 
@@ -239,6 +244,11 @@ void	debug_print_map_with_9(t_main *config);
 void	debug_print_current_block(t_main *config, int x, int y);
 void	debug_print_enemy_info(t_main *config, int x, int y);
 void	debug_print_player_info(t_main *config, int x, int y);
+
+// debug.2.c
+void	debug_print_keycode_press(t_main *config, int keycode);
+void	debug_print_keycode_release(int keycode);
+void	debug_print_inited(t_main *config);
 
 /* ########################################################################## */
 

@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 02:57:50 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 15:37:51 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:37:50 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,10 @@ void	parse_wall(t_main *config)
 		}
 		j = 0;
 		i++;
+	}
+	if (DEBUG)
+	{
+		ft_printf("wall_parsed_map\n");
+		debug_print_map_without_9(config);
 	}
 }

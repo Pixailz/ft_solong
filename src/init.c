@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 17:02:13 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:08:37 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,20 @@ void	init_texture(t_main *config)
 
 void	init_hook(t_main *config)
 {
-	mlx_hook(config->win, 33, 1L << 17, end_hook, config);
+	mlx_hook(config->win, 33, (1L << 17), end_hook, config);
+	mlx_hook(config->win, 2, (1L << 0), keypress, config);
+	mlx_hook(config->win, 3, (1L << 1), keyrelease, config);
 	mlx_loop_hook(config->mlx, draw_map, config);
-	mlx_key_hook(config->win, keypress, config);
 }
 
 void	init_main(t_main *config)
 {
 	config->mlx = mlx_init();
-	if (config->retry)
-		mlx_destroy_window(config->mlx, config->win);
 	config->win = mlx_new_window(config->mlx, \
 							config->width * BLOCK_SIZE, \
 							(config->height * BLOCK_SIZE) + INFO_PADDING, \
 							WIN_TITLE);
 	init_hook(config);
-	config->texture_loaded = 0;
 	config->enemy_loaded = 0;
 	config->map_new_loaded = 0;
 	config->p_key = 0;
@@ -95,6 +93,9 @@ void	init_main(t_main *config)
 	config->nb_enemy = 0;
 	config->nb_door = 0;
 	config->nb_key = 0;
+	if (!config->texture_loaded)
+		init_texture(config);
 	check_map(config);
-	init_texture(config);
+	if (DEBUG)
+		debug_print_inited(config);
 }

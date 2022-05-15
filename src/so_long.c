@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:00:32 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 17:27:17 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:12:47 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_error("Not enought args");
 	config.retry = 1;
+	config.texture_loaded = 0;
 	while (config.retry)
 	{
+		ft_printf("Starting games\n");
 		config.textures = &textures;
-		config.retry = 0;
 		parse_map(&config, argv[1]);
 		init_main(&config);
 		if (config.nb_enemy > 0)

@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 17:01:57 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:43:54 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ void	free_textures(t_main *config)
 
 void	free_entry_point(t_main *config)
 {
-	if (config->texture_loaded)
-		free_textures(config);
 	if (config->map_loaded)
 		free_map(config);
 	if (config->map_new_loaded)
 		free_map_new(config);
 	if (config->enemy_loaded)
 		free_enemy(config);
+	if (config->texture_loaded)
+		free_textures(config);
 	mlx_destroy_window(config->mlx, config->win);
 	mlx_destroy_display(config->mlx);
 	free(config->mlx);

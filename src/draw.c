@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 16:57:05 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:41:50 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,3 @@ int	draw_map(t_main *config)
 	usleep(1000000 / FPS);
 	return (1);
 }
-
-/*# define KEY_LEFT	0xff51
-
-	mlx_put_image_to_window(config->mlx, config->win, config->textures->health_1000, \
-							(config->p_y - 1) * BLOCK_SIZE, (config->p_x + 1) * BLOCK_SIZE);
-*/

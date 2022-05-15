@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/15 17:15:21 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/15 19:59:57 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ export ascii_art
 
 # **************************************************************************** #
 # config
-CFLAGS			:= -Wall -Wextra -g #-Werror -g
+CFLAGS			:= -Wall -Wextra -Werror -g
 TARGET			:= so_long
 RM				:= rm -rf
 CC				:= gcc

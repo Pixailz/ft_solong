@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:35:50 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 17:26:11 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:39:31 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,45 +55,6 @@ void	put_steps(t_main *config)
 	free(tmp);
 }
 
-void	move_player_increment(t_main *config, int x, int y)
-{
-	config->p_x += x;
-	config->p_y += y;
-	config->p_step++;
-	put_steps(config);
-	if (config->p_win)
-		print_before_win_loose(config);
-}
-
-void	move_player(t_main *config, int x, int y)
-{
-	int			return_code;
-
-	return_code = check_move(config, x, y, \
-							config->map_new[config->p_x + x][config->p_y + y]);
-	if (!return_code)
-		return ;
-	else if (return_code == -1)
-	{
-		config->map_new[config->p_x][config->p_y] = config->saved_block;
-		config->saved_block = config->map_new[config->p_x + x][config->p_y + y];
-		config->map_new[config->p_x + x][config->p_y + y] = 'p';
-	}
-	else if (return_code == -2)
-	{
-		config->map_new[config->p_x + x][config->p_y + y] = 'P';
-		config->map_new[config->p_x][config->p_y] = config->saved_block;
-		config->saved_block = '0';
-	}
-	else if (return_code == 1)
-	{
-		config->map_new[config->p_x][config->p_y] = config->saved_block;
-		config->saved_block = config->map_new[config->p_x + x][config->p_y + y];
-		config->map_new[config->p_x + x][config->p_y + y] = 'P';
-	}
-	move_player_increment(config, x, y);
-}
-
 int	keypress(int keycode, t_main *config)
 {
 	config->p_last_step = config->p_step;
@@ -117,5 +78,15 @@ int	keypress(int keycode, t_main *config)
 		if (keycode == KEY_D || keycode == KEY_RIGHT)
 			move_player(config, 0, 1);
 	}
+	if (DEBUG)
+		debug_print_keycode_press(config, keycode);
+	return (1);
+}
+
+int	keyrelease(int keycode, t_main *config)
+{
+	(void) config;
+	if (DEBUG)
+		debug_print_keycode_release(keycode);
 	return (1);
 }
