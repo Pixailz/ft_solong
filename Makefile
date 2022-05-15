@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/14 23:11:35 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/15 17:15:21 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,7 +132,7 @@ $(BIN_DIR):
 	@printf "$(font_color)[$(green)+$(font_color)] Creation of $(bold)$(BIN_DIR)$(reset)\n"
 	@mkdir -p $(BIN_DIR)
 
-clean_lib:				clean
+clean_all:				clean
 	@$(MAKE) lib/libft clean
 	@$(MAKE) lib/ft_printf clean
 	@$(MAKE) lib/minilibx-linux clean
@@ -142,7 +142,7 @@ clean:
 	@printf "$(font_color)[$(red)-$(font_color)] Deleting $(bold)$(OBJ_DIR)$(reset)\n"
 	@$(RM) $(OBJ_DIR)
 
-fclean_lib:				fclean
+fclean_all:				fclean
 	@$(MAKE) lib/libft fclean
 	@$(MAKE) lib/ft_printf fclean
 	@$(MAKE) lib/minilibx-linux clean
@@ -162,8 +162,9 @@ re_lib:
 
 re:						fclean all
 
-rre:					fclean_lib clean_lib all
+re_all:					re_lib re
 
-.PHONY:					all clean fclean re setup lib call_logo
+.PHONY:					all clean clean_all fclean fclean_all re re_all setup
+						call_logo
 
 # **************************************************************************** #

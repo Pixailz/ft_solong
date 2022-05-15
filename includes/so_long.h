@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 23:59:55 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:29:10 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,38 @@
 # ifndef DEBUG
 #  define DEBUG	1
 # endif
-# define WIN_TITLE "SO LONG..."
-# define BLOCK_SIZE 32
-# define TITLE_PADDING 72
-# define DEFAULT_ENEMY_HEALTH 3
-# define DEFAULT_PLAYER_HEALTH 100
-# define DEFAULT_ENEMY_DAMAGE 1
-# define DEFAULT_PLAYER_DAMAGE 1
-# define GOOD_POINT "10EPCK"
 
-# define KEY_W		0x77
+// UI
+# define WIN_TITLE		"SO LONG..."
+# define INFO_PADDING	74
+# define BLOCK_SIZE		32
+# define FPS 			60
+
+// GAME
+# define DEFAULT_PLAYER_HEALTH	5
+# define DEFAULT_PLAYER_DAMAGE	1
+# define DEFAULT_ENEMY_HEALTH	3
+# define DEFAULT_ENEMY_DAMAGE	0.25
+
+// KEYBOARD
+	// DEFAULT
+# define KEY_A	0x61
+# define KEY_W	0x77
+# define KEY_S	0x73
+# define KEY_D	0x64
+
+	// ARROW
 # define KEY_UP		0xff52
-# define KEY_A		0x61
 # define KEY_RIGHT	0xff53
-# define KEY_S		0x73
 # define KEY_DOWN	0xff54
-# define KEY_D		0x64
-# define KEY_R		0x72
 # define KEY_LEFT	0xff51
+
+	// EXTRA
+# define KEY_R		0x72
 # define KEY_ESC	0xff1b
+
+// OTHER
+# define GOOD_POINT	"10EPCK"
 
 /* ########################################################################## */
 
@@ -60,29 +73,16 @@
 /* ###### */
 
 typedef struct s_textures {
-	void	*player_00;
-	void	*player_01;
-	void	*player_02;
-	void	*player_03;
-	void	*player_04;
-	void	*player_05;
-	void	*player_06;
-	void	*player_07;
-	void	*player_08;
-	void	*player_09;
-	void	*player_10;
-	void	*enemy_00;
-	void	*enemy_01;
-	void	*enemy_02;
-	void	*enemy_03;
-	void	*enemy_04;
-	void	*enemy_05;
-	void	*enemy_06;
-	void	*enemy_07;
-	void	*enemy_08;
-	void	*enemy_09;
-	void	*enemy_10;
-	void	*grave;
+	void	*health_01;
+	void	*health_02;
+	void	*health_03;
+	void	*health_04;
+	void	*health_05;
+	void	*health_06;
+	void	*health_07;
+	void	*health_08;
+	void	*health_09;
+	void	*health_10;
 	void	*wall_0;
 	void	*wall_1_n;
 	void	*wall_1_s;
@@ -99,6 +99,10 @@ typedef struct s_textures {
 	void	*wall_3_e;
 	void	*wall_3_w;
 	void	*wall_4;
+	void	*player;
+	void	*enemy;
+	void	*grave;
+	void	*player_on_grave;
 	void	*ground;
 	void	*door_open;
 	void	*door_close;
@@ -116,6 +120,9 @@ typedef struct s_main {
 	void		*win;
 	t_textures	*textures;
 	int			texture_loaded;
+	int			enemy_loaded;
+	int			map_loaded;
+	int			map_new_loaded;
 	char		saved_block;
 	int			retry;
 	char		**map;
@@ -151,6 +158,13 @@ void	change_3(t_main *config, int dir[4], int i, int j);
 // draw_health_bar.c
 void	draw_player(t_main *config, int x, int y);
 void	draw_enemy(t_main *config, int x, int y);
+int		get_enemy_id(t_main *config, int y, int x);
+
+// draw_str.c
+void	print_close(t_main *config);
+void	print_retry(t_main *config);
+void	retry_choose(t_main *config);
+void	print_before_win_loose(t_main *config);
 
 // draw.c
 int		draw_map(t_main *config);
@@ -166,8 +180,7 @@ void	free_map_new(t_main *config);
 
 // free.2.c
 void	free_texture_walls(t_main *config);
-void	free_texture_players(t_main *config);
-void	free_texture_enemys(t_main *config);
+void	free_texture_health(t_main *config);
 
 // game_duel.c
 void	duel(t_main *config);
@@ -182,8 +195,7 @@ void	put_steps(t_main *config);
 void	init_enemy(t_main *config);
 t_enemy	*init_get_enemy(int i, int j);
 void	free_enemy(t_main *config);
-void	init_texture_players(t_main *config);
-void	init_texture_enemys(t_main *config);
+void	init_texture_health(t_main *config);
 
 // init.c
 void	*texture_load(t_main *config, char *path);
@@ -197,7 +209,7 @@ int		check_minimum_point(t_main *config);
 void	exit_minimum_point(int return_code);
 int		check_is_wall(char block);
 int		end_hook(t_main *config);
-int		check_move(t_main *config, char next_move);
+int		check_move(t_main *config, int x, int y, char next_move);
 
 // map_check.c
 void	check_map(t_main *config);
@@ -219,9 +231,14 @@ void	parse_map(t_main *config, char *file_name);
 char	*get_all_file(char *file_name);
 
 // so_long.c
-void	print_before_win_loose(t_main *config);
-void	print_close(t_main *config);
-void	print_retry(t_main *config);
+int		move_win(t_main *config, int x, int y);
+
+// debug.c
+void	debug_print_map_without_9(t_main *config);
+void	debug_print_map_with_9(t_main *config);
+void	debug_print_current_block(t_main *config, int x, int y);
+void	debug_print_enemy_info(t_main *config, int x, int y);
+void	debug_print_player_info(t_main *config, int x, int y);
 
 /* ########################################################################## */
 

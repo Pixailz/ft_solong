@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:32:01 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 05:25:40 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:09:50 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	parse_map(t_main *config, char *file_name)
 	all_file = get_all_file(file_name);
 	config->height = ft_get_words(all_file, '\n');
 	config->map = ft_split(all_file, '\n');
+	config->map_loaded = 1;
 	config->width = ft_strlen(config->map[0]);
 	free(all_file);
 }

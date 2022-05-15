@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check_2.c                                      :+:      :+:    :+:   */
+/*   map_check.2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:27:05 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 21:13:07 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:26:35 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	exit_minimum_point(int return_code)
 {
 	if (return_code == 1)
 		ft_error("have multiple player");
-	if (return_code == 1)
+	if (return_code == 2)
 		ft_error("have no player");
 	if (return_code == 3)
 		ft_error("have no door");
@@ -54,7 +54,7 @@ int	end_hook(t_main *config)
 	return (1);
 }
 
-int	check_move(t_main *config, char next_move)
+int	check_move(t_main *config, int x, int y, char next_move)
 {
 	if (check_is_wall(next_move) || next_move == 'E')
 		return (0);
@@ -67,8 +67,7 @@ int	check_move(t_main *config, char next_move)
 	}
 	if (next_move == 'e')
 	{
-		config->p_win = 1;
-		return (1);
+		return (move_win(config, x, y));
 	}
 	if (next_move == 'K')
 	{

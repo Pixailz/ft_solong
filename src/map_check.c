@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 04:27:56 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 18:58:00 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:05:53 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,8 @@ int	check_surrounded(t_main *config)
 	{
 		while (j < config->width)
 		{
-			if (i == 0)
-				if (config->map[i][j] != '1')
-					return (0);
-			if (j == 0)
-				if (config->map[i][j] != '1')
-					return (0);
-			if (j + 1 == config->width)
+			if (i == 0 || i + 1 == config->height || \
+				j == 0 || j + 1 == config->width)
 				if (config->map[i][j] != '1')
 					return (0);
 			j++;
@@ -97,6 +92,11 @@ void	check_map(t_main *config)
 {
 	int	return_code;
 
+	if (!check_wrong_point(config))
+	{
+		free_entry_point(config);
+		ft_error("Wrong point on the map");
+	}
 	if (!check_width(config))
 	{
 		free_entry_point(config);
@@ -106,11 +106,6 @@ void	check_map(t_main *config)
 	{
 		free_entry_point(config);
 		ft_error("Map no surrounded");
-	}
-	if (!check_wrong_point(config))
-	{
-		free_entry_point(config);
-		ft_error("Wrong point on the map");
 	}
 	return_code = check_minimum_point(config);
 	if (return_code)

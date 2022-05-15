@@ -6,122 +6,75 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 00:08:04 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:18:40 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
 
-void	draw_player(t_main *config, int x, int y)
+void	put_health_bar(t_main *config, void *img, int x, int y)
 {
-	double	current_percent;
-
-	current_percent = (int)((config->p_health * 100) / DEFAULT_PLAYER_HEALTH);
-	ft_printf("current_player_hp : %d\n", current_percent);
-	if (current_percent > 95)
-		put_image(config, config->textures->player_10, x, y);
-	else if (current_percent > 85)
-		put_image(config, config->textures->player_09, x, y);
-	else if (current_percent > 75)
-		put_image(config, config->textures->player_08, x, y);
-	else if (current_percent > 65)
-		put_image(config, config->textures->player_07, x, y);
-	else if (current_percent > 55)
-		put_image(config, config->textures->player_06, x, y);
-	else if (current_percent > 45)
-		put_image(config, config->textures->player_05, x, y);
-	else if (current_percent > 35)
-		put_image(config, config->textures->player_04, x, y);
-	else if (current_percent > 25)
-		put_image(config, config->textures->player_03, x, y);
-	else if (current_percent > 15)
-		put_image(config, config->textures->player_02, x, y);
-	else if (current_percent > 5)
-		put_image(config, config->textures->player_01, x, y);
-	else
-		put_image(config, config->textures->player_00, x, y);
+	mlx_put_image_to_window(config->mlx, config->win, img, \
+							(x * BLOCK_SIZE) + 1, \
+							((y * BLOCK_SIZE) + INFO_PADDING) + 1);
 }
 
-double	draw_get_health_enemy(t_main *config, int x, int y)
+void	draw_health_bar(t_main *config, int x, int y, int current_percent)
+{
+	if (current_percent > 95)
+		put_health_bar(config, config->textures->health_10, x, y);
+	else if (current_percent > 85)
+		put_health_bar(config, config->textures->health_09, x, y);
+	else if (current_percent > 75)
+		put_health_bar(config, config->textures->health_08, x, y);
+	else if (current_percent > 65)
+		put_health_bar(config, config->textures->health_07, x, y);
+	else if (current_percent > 55)
+		put_health_bar(config, config->textures->health_06, x, y);
+	else if (current_percent > 45)
+		put_health_bar(config, config->textures->health_05, x, y);
+	else if (current_percent > 35)
+		put_health_bar(config, config->textures->health_04, x, y);
+	else if (current_percent > 25)
+		put_health_bar(config, config->textures->health_03, x, y);
+	else if (current_percent > 15)
+		put_health_bar(config, config->textures->health_02, x, y);
+	else if (current_percent > 5)
+		put_health_bar(config, config->textures->health_01, x, y);
+}
+
+void	draw_player(t_main *config, int x, int y)
+{
+	if (config->map_new[y + 1][x + 1] == 'p')
+		put_image(config, config->textures->player_on_grave, x, y);
+	else if (config->map_new[y + 1][x + 1] != 'e')
+		put_image(config, config->textures->player, x, y);
+	draw_health_bar(config, x, y, (int)(config->p_health * 100) / \
+									DEFAULT_PLAYER_HEALTH);
+}
+
+int	get_enemy_id(t_main *config, int y, int x)
 {
 	int	i;
 
 	i = 0;
 	while (i < config->nb_enemy)
 	{
-		if (config->enemy[i]->pos_x == x & config->enemy[i]->pos_y == y)
-			return (config->enemy[i]->health);
+		if (config->enemy[i]->pos_x == x + 1 && \
+			config->enemy[i]->pos_y == y + 1)
+			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
-void	draw_enemy(t_main *config, int y, int x)
+void	draw_enemy(t_main *config, int x, int y)
 {
-	double	current_percent;
+	int	id_enemy;
 
-	current_percent = ((draw_get_health_enemy(config, y, x) * 100) \
-										/ DEFAULT_ENEMY_HEALTH);
-	printf("enemy hp: %f\n", current_percent);
-	if (current_percent > 95)
-		put_image(config, config->textures->enemy_10, x, y);
-	else if (current_percent > 85)
-		put_image(config, config->textures->enemy_09, x, y);
-	else if (current_percent > 75)
-		put_image(config, config->textures->enemy_08, x, y);
-	else if (current_percent > 65)
-		put_image(config, config->textures->enemy_07, x, y);
-	else if (current_percent > 55)
-		put_image(config, config->textures->enemy_06, x, y);
-	else if (current_percent > 45)
-		put_image(config, config->textures->enemy_05, x, y);
-	else if (current_percent > 35)
-		put_image(config, config->textures->enemy_04, x, y);
-	else if (current_percent > 25)
-		put_image(config, config->textures->enemy_03, x, y);
-	else if (current_percent > 15)
-		put_image(config, config->textures->enemy_02, x, y);
-	else if (current_percent > 5)
-		put_image(config, config->textures->enemy_01, x, y);
-	else
-		put_image(config, config->textures->enemy_00, x, y);
+	id_enemy = get_enemy_id(config, x, y);
+	put_image(config, config->textures->enemy, x, y);
+	draw_health_bar(config, x, y, (int)(config->enemy[id_enemy]->health * 100) \
+												/ DEFAULT_ENEMY_HEALTH);
 }
-
-/*
-void	duel_check_direction(t_main *config, int i, int j)
-{
-	if (config->enemy[i]->pos_x == config->p_x + j && \
-		config->enemy[i]->pos_y == config->p_y)
-	{
-		duel_deal_damage(config, config->enemy[i]);
-		config->p_step++;
-	}
-	if (config->enemy[i]->pos_x == config->p_x && \
-		config->enemy[i]->pos_y == config->p_y + j)
-	{
-		duel_deal_damage(config, config->enemy[i]);
-		config->p_step++;
-	}
-}
-
-void	get_nearby_enemy(t_main *config)
-{
-* 1 00) \
-										/ DEFAULT_PLAYER_HEALTHi;
-	int	j;
-
-config, co nfig->textures->enemy_10,0;
-	j = -1;
-	while (i < config->nb_enemy)
-	{
-		while (j <= 1)
-		{
-			duel_check_direction(config, i, j);
-			j += 2;
-		}
-		j = -1;
-		i++;
-	}
-}
-*/

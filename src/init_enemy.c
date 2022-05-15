@@ -6,40 +6,24 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:25:39 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 23:14:57 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:49:15 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_texture_players(t_main *config)
+void	init_texture_health(t_main *config)
 {
-	config->textures->player_00 = texture_load(config, "res/img/player_00.xpm");
-	config->textures->player_01 = texture_load(config, "res/img/player_01.xpm");
-	config->textures->player_02 = texture_load(config, "res/img/player_02.xpm");
-	config->textures->player_03 = texture_load(config, "res/img/player_03.xpm");
-	config->textures->player_04 = texture_load(config, "res/img/player_04.xpm");
-	config->textures->player_05 = texture_load(config, "res/img/player_05.xpm");
-	config->textures->player_06 = texture_load(config, "res/img/player_06.xpm");
-	config->textures->player_07 = texture_load(config, "res/img/player_07.xpm");
-	config->textures->player_08 = texture_load(config, "res/img/player_08.xpm");
-	config->textures->player_09 = texture_load(config, "res/img/player_09.xpm");
-	config->textures->player_10 = texture_load(config, "res/img/player_10.xpm");
-}
-
-void	init_texture_enemys(t_main *config)
-{
-	config->textures->enemy_00 = texture_load(config, "res/img/enemy_00.xpm");
-	config->textures->enemy_01 = texture_load(config, "res/img/enemy_01.xpm");
-	config->textures->enemy_02 = texture_load(config, "res/img/enemy_02.xpm");
-	config->textures->enemy_03 = texture_load(config, "res/img/enemy_03.xpm");
-	config->textures->enemy_04 = texture_load(config, "res/img/enemy_04.xpm");
-	config->textures->enemy_05 = texture_load(config, "res/img/enemy_05.xpm");
-	config->textures->enemy_06 = texture_load(config, "res/img/enemy_06.xpm");
-	config->textures->enemy_07 = texture_load(config, "res/img/enemy_07.xpm");
-	config->textures->enemy_08 = texture_load(config, "res/img/enemy_08.xpm");
-	config->textures->enemy_09 = texture_load(config, "res/img/enemy_09.xpm");
-	config->textures->enemy_10 = texture_load(config, "res/img/enemy_10.xpm");
+	config->textures->health_10 = texture_load(config, "res/img/health_10.xpm");
+	config->textures->health_09 = texture_load(config, "res/img/health_09.xpm");
+	config->textures->health_08 = texture_load(config, "res/img/health_08.xpm");
+	config->textures->health_07 = texture_load(config, "res/img/health_07.xpm");
+	config->textures->health_06 = texture_load(config, "res/img/health_06.xpm");
+	config->textures->health_05 = texture_load(config, "res/img/health_05.xpm");
+	config->textures->health_04 = texture_load(config, "res/img/health_04.xpm");
+	config->textures->health_03 = texture_load(config, "res/img/health_03.xpm");
+	config->textures->health_02 = texture_load(config, "res/img/health_02.xpm");
+	config->textures->health_01 = texture_load(config, "res/img/health_01.xpm");
 }
 
 void	free_enemy(t_main *config)
@@ -47,9 +31,11 @@ void	free_enemy(t_main *config)
 	int	i;
 
 	i = 0;
-	while (i < config->nb_enemy)
-		free(config->enemy[i++]);
+	if (config->enemy_loaded)
+		while (i < config->nb_enemy)
+			free(config->enemy[i++]);
 	free(config->enemy);
+	config->enemy = NULL;
 }
 
 t_enemy	*init_get_enemy(int i, int j)
@@ -85,4 +71,5 @@ void	init_enemy(t_main *config)
 		j = 0;
 		i++;
 	}
+	config->enemy_loaded = 1;
 }

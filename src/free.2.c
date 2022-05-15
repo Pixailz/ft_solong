@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 22:10:23 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:48:52 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,16 @@ void	free_texture_walls(t_main *config)
 	free_texture(config, config->textures->wall_4);
 }
 
-void	free_texture_players(t_main *config)
+void	free_texture_health(t_main *config)
 {
-	free_texture(config, config->textures->player_00);
-	free_texture(config, config->textures->player_01);
-	free_texture(config, config->textures->player_02);
-	free_texture(config, config->textures->player_03);
-	free_texture(config, config->textures->player_04);
-	free_texture(config, config->textures->player_05);
-	free_texture(config, config->textures->player_06);
-	free_texture(config, config->textures->player_07);
-	free_texture(config, config->textures->player_08);
-	free_texture(config, config->textures->player_09);
-	free_texture(config, config->textures->player_10);
-}
-
-void	free_texture_enemys(t_main *config)
-{
-	free_texture(config, config->textures->enemy_00);
-	free_texture(config, config->textures->enemy_01);
-	free_texture(config, config->textures->enemy_02);
-	free_texture(config, config->textures->enemy_03);
-	free_texture(config, config->textures->enemy_04);
-	free_texture(config, config->textures->enemy_05);
-	free_texture(config, config->textures->enemy_06);
-	free_texture(config, config->textures->enemy_07);
-	free_texture(config, config->textures->enemy_08);
-	free_texture(config, config->textures->enemy_09);
-	free_texture(config, config->textures->enemy_10);
+	free_texture(config, config->textures->health_10);
+	free_texture(config, config->textures->health_09);
+	free_texture(config, config->textures->health_08);
+	free_texture(config, config->textures->health_07);
+	free_texture(config, config->textures->health_06);
+	free_texture(config, config->textures->health_05);
+	free_texture(config, config->textures->health_04);
+	free_texture(config, config->textures->health_03);
+	free_texture(config, config->textures->health_02);
+	free_texture(config, config->textures->health_01);
 }

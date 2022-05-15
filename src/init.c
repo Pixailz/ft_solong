@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 22:24:10 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:02:13 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,12 @@ void	init_texture_walls(t_main *config)
 void	init_texture(t_main *config)
 {
 	init_texture_walls(config);
-	init_texture_players(config);
-	init_texture_enemys(config);
+	init_texture_health(config);
+	config->textures->player = texture_load(config, "res/img/player.xpm");
+	config->textures->enemy = texture_load(config, "res/img/enemy.xpm");
 	config->textures->grave = texture_load(config, "res/img/grave.xpm");
+	config->textures->player_on_grave = texture_load(config, \
+														"res/img/p_on_g.xpm");
 	config->textures->ground = texture_load(config, "res/img/ground.xpm");
 	config->textures->door_close = texture_load(config, \
 												"res/img/door_close.xpm");
@@ -75,10 +78,12 @@ void	init_main(t_main *config)
 		mlx_destroy_window(config->mlx, config->win);
 	config->win = mlx_new_window(config->mlx, \
 							config->width * BLOCK_SIZE, \
-							(config->height * BLOCK_SIZE) + TITLE_PADDING, \
+							(config->height * BLOCK_SIZE) + INFO_PADDING, \
 							WIN_TITLE);
 	init_hook(config);
 	config->texture_loaded = 0;
+	config->enemy_loaded = 0;
+	config->map_new_loaded = 0;
 	config->p_key = 0;
 	config->p_win = 0;
 	config->p_step = 0;
@@ -90,5 +95,6 @@ void	init_main(t_main *config)
 	config->nb_enemy = 0;
 	config->nb_door = 0;
 	config->nb_key = 0;
+	check_map(config);
 	init_texture(config);
 }

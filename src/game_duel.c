@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:57:54 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 23:56:02 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:23:29 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	duel_deal_damage(t_main *config, t_enemy *enemy)
 		config->map_new[enemy->pos_x][enemy->pos_y] = 'k';
 	if (config->p_health <= 0)
 	{
+		config->map_new[config->p_x][config->p_y] = 'X';
 		config->p_win = -1;
 		print_before_win_loose(config);
 	}

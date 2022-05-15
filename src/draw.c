@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/14 23:57:59 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:57:05 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	put_image(t_main *config, void *img, int x, int y)
 {
 	mlx_put_image_to_window(config->mlx, config->win, img, \
-							x * BLOCK_SIZE, (y * BLOCK_SIZE) + TITLE_PADDING);
+							x * BLOCK_SIZE, (y * BLOCK_SIZE) + INFO_PADDING);
 }
 
 void	draw_wall_block_oriented(t_main *config, int x, int y)
@@ -67,14 +67,14 @@ void	draw_block(t_main *config, int x, int y)
 		put_image(config, config->textures->door_close, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'e')
 		put_image(config, config->textures->door_open, y - 1, x - 1);
-	else if (config->map_new[x][y] == 'P')
+	else if (config->map_new[x][y] == 'P' || config->map_new[x][y] == 'p')
 		draw_player(config, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'C')
 		put_image(config, config->textures->key, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'K')
 		draw_enemy(config, y - 1, x - 1);
-	else if (config->map_new[x][y] == 'k')
-		draw_enemy(config, y - 1, x - 1);
+	else if (config->map_new[x][y] == 'k' || config->map_new[x][y] == 'X')
+		put_image(config, config->textures->grave, y - 1, x - 1);
 	else
 		draw_block_wall(config, x, y);
 }
@@ -96,11 +96,12 @@ int	draw_map(t_main *config)
 		j = 0;
 		i++;
 	}
-	usleep(25 * 1000);
+	usleep(1000000 / FPS);
 	return (1);
 }
 
-/*
+/*# define KEY_LEFT	0xff51
+
 	mlx_put_image_to_window(config->mlx, config->win, config->textures->health_1000, \
 							(config->p_y - 1) * BLOCK_SIZE, (config->p_x + 1) * BLOCK_SIZE);
 */
