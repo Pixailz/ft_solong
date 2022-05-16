@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:35:50 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 22:31:05 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/16 01:57:37 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	move_player_increment(t_main *config, int x, int y)
 void	move_player(t_main *config, int x, int y)
 {
 	int			return_code;
+
 	return_code = check_move(config, x, y, \
 							config->map_new[config->p_x + x][config->p_y + y]);
 	if (!return_code)
