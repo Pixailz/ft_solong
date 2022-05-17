@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:19:15 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 03:24:39 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 04:28:10 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	retry_choose(t_main *config)
 		put_str_log(config, "Press R to retry", GREEN);
 		put_str_log(config, "ESC to exit", GREEN);
 	}
-	put_str_log(config, "Press R to retry ESC to exit", GREEN);
+	else
+		put_str_log(config, "Press R to retry ESC to exit", GREEN);
 }
 
 void	print_win_step(t_main *config)
