@@ -1,7 +1,7 @@
 #!/bin/sh
 
 SRC_DIR="src"
-INC_FILE="includes/blank.h"
+INC_FILE="includes/so_long.h"
 
 while [ "$1" != "" ]
 do
@@ -32,7 +32,7 @@ clear_header()
 
 get_function_in_file()
 {
-	tmp_func=$(sed -nE 's|^[a-z0-9A-Z\_]+\s(\*[a-z0-9A-Z\_]*)\(.*|\1|p' ${1} | \
+	tmp_func=$(sed -nE 's|^[a-z0-9A-Z\_]+\s(\**?[a-z0-9A-Z\_]*)\(.*|\1|p' ${1} | \
 			   grep -vE '^static')
 	insert_at_line "// ${file/*\//}"
 	for func in ${tmp_func}

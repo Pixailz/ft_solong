@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:19:15 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 04:28:10 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:50:12 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	print_retry(t_main *config)
 
 void	retry_choose(t_main *config)
 {
+	if (config->p_current_map + 1 == config->nb_map)
+		put_str_log(config, "No map left.", RED);
 	ft_printf("Press R to retry ESC to exit\n");
 	if (config->width == 5)
 	{

@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/16 23:03:19 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 08:50:08 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	free_textures(t_main *config)
 	free_texture(config, config->textures->player_on_grave);
 	free_texture(config, config->textures->ground);
 	free_texture(config, config->textures->door_close);
+	free_texture(config, config->textures->door_between);
 	free_texture(config, config->textures->door_open);
 	free_texture(config, config->textures->key);
 	config->texture_loaded = 0;

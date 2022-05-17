@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/17 07:01:06 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/17 10:04:48 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ TARGET			:= so_long
 RM				:= rm -rf
 CC				:= gcc
 MAKE			:= make -C
-VERSION			:= 2.1.1
+VERSION			:= 2.1.3
 $(eval export MAIN=1)
 
 ifneq ($(PADDING),30)
@@ -120,11 +120,17 @@ define print_padded
 endef
 
 define usage
-	@printf '$(orange_star) $(bold)$(TARGET)$(font_color): $(bold)needed_args '
-	@printf '$(font_color)[$(bold)optional_args$(font_color)]$(reset)\n'
-	@printf '        $(bold)arg$(font_color): eplanation\n'
-	@printf '        $(bold)arg$(font_color): eplanation\n'
-	@printf '        $(bold)arg$(font_color): eplanation, $(bold)WARNING$(reset)\n'
+	@printf '$(orange_star) $(bold)$(TARGET)$(font_color):\n\n'
+	@printf '    $(font_color)./$(TARGET) $(bold)<PATH_TO_MAP>\n\n'
+	@printf '        $(font_color)A folder map is given within the $(bold)res/map'
+	@printf '$(font_color) folder.\n'
+	@printf '        $(bold)Feel free$(font_color) to test the test map in the $(bold)'
+	@printf 'res/map/test$(font_color), for\n'
+	@printf '        the parsing or with $(bold)10.000 $(font_color)enemy :)\n\n'
+	@printf '        The number of the map can be $(bold)unlimited$(font_color)'
+	@printf ', meaning that the \n        $(bold)argv$(font_color)'
+	@printf '[$(bold)1$(font_color)] is the first "$(bold)level$(font_color)"'
+	@printf ' and so on\n\n'
 	@printf '$(font_color)Version: $(bold)$(VERSION)$(reset)\n'
 
 endef
@@ -133,7 +139,9 @@ endef
 # **************************************************************************** #
 # Rules
 
-all:			setup $(TARGET)
+all:			setup $(TARGET) usage
+
+usage:
 	$(call usage)
 
 $(OBJ_DIR)/%.o: 		$(SRC_DIR)/%.c

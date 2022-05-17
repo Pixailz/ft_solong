@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/16 23:18:45 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:32:41 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	init_texture(t_main *config)
 	config->textures->ground = texture_load(config, "res/img/ground.xpm");
 	config->textures->door_close = texture_load(config, \
 												"res/img/door_close.xpm");
+	config->textures->door_between = texture_load(config, \
+												"res/img/door_between.xpm");
 	config->textures->door_open = texture_load(config, "res/img/door_open.xpm");
 	config->textures->key = texture_load(config, "res/img/key.xpm");
 }

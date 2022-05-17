@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/16 06:24:35 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/17 07:15:55 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,9 @@ endef
 # **************************************************************************** #
 # Rules
 
-all:			setup $(TARGET)
+all:			setup $(TARGET) usage
+
+usage:
 ifneq ($(MAIN),1)
 	$(call usage)
 endif

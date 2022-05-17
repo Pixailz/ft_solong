@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 07:01:27 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:47:56 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define FPS 				60
 
 // LOG
-# define LOG_LENGTH			15
+# define LOG_LENGTH			10
 # define LOG_FONT_HEIGTH	15
 # define LOG_FONT_WIDTH		5
 # define LOG_BLOCK_LENGTH	6
@@ -72,6 +72,7 @@
 	// EXTRA
 # define KEY_R		0x72
 # define KEY_ESC	0xff1b
+# define KEY_SPACE	0x20
 
 // OTHER
 # define GOOD_POINT	"10EPCK"
@@ -115,6 +116,7 @@ typedef struct s_textures {
 	void	*player_on_grave;
 	void	*ground;
 	void	*door_open;
+	void	*door_between;
 	void	*door_close;
 	void	*key;
 }				t_textures;
@@ -157,12 +159,17 @@ typedef struct s_main {
 	int			p_win;
 	int			p_step;
 	int			p_last_step;
+	int			p_current_map;
 	int			width;
 	int			height;
 	int			nb_player;
 	int			nb_enemy;
 	int			nb_door;
 	int			nb_key;
+	int			nb_figth;
+	int			nb_map;
+	char		**map_str;
+	char		*map_1_str;
 	t_enemy		**enemy;
 	t_log		*log;
 }				t_main;
@@ -195,14 +202,17 @@ void	put_image(t_main *config, void *img, int x, int y);
 void	draw_wall_block_oriented(t_main *config, int x, int y);
 void	draw_block_wall(t_main *config, int x, int y);
 void	draw_block(t_main *config, int x, int y);
-int		draw_map(t_main *config);
+int	draw_map(t_main *config);
 
 // draw_health_bar.c
 void	put_health_bar(t_main *config, void *img, int x, int y);
 void	draw_health_bar(t_main *config, int x, int y, int current_percent);
 void	draw_player(t_main *config, int x, int y);
-int		get_enemy_id(t_main *config, int y, int x);
+int	get_enemy_id(t_main *config, int y, int x);
 void	draw_enemy(t_main *config, int x, int y);
+
+// draw_str.2.c
+void	print_continue(t_main *config);
 
 // draw_str.c
 void	print_close(t_main *config);
@@ -224,10 +234,11 @@ void	free_textures(t_main *config);
 void	free_entry_point(t_main *config);
 
 // game.c
+void	open_door_2(t_main *config);
 void	open_door(t_main *config);
 void	put_steps(t_main *config);
-int		keypress(int keycode, t_main *config);
-int		keyrelease(int keycode, t_main *config);
+int	keypress(int keycode, t_main *config);
+int	keyrelease(int keycode, t_main *config);
 
 // game_duel.c
 void	duel_deal_damage(t_main *config, t_enemy *enemy);
@@ -238,6 +249,8 @@ void	duel(t_main *config);
 // game_move.c
 void	move_player_increment(t_main *config, int x, int y);
 void	move_player(t_main *config, int x, int y);
+void	keypress_inmenu(t_main *config, int keycode);
+void	keypress_ingame(t_main *config, int keycode);
 
 // init.c
 void	*texture_load(t_main *config, char *path);
@@ -252,8 +265,15 @@ void	free_enemy(t_main *config);
 t_enemy	*init_get_enemy(int i, int j);
 void	init_enemy(t_main *config);
 
+// init_multiple_map.c
+void	pre_init(t_main *config);
+void	init_multiple_map(t_main *config, char **argv);
+
 // log.2.c
 void	put_separator_log(t_main *config);
+void	put_log_duel_5(t_main *config);
+void	put_log_duel_other(t_main *config);
+void	put_log_duel_kill(t_main *config, int x, int y);
 
 // log.c
 void	init_log(t_main *config);
@@ -263,34 +283,34 @@ void	put_log_str_defil(t_main *config);
 void	put_str_log(t_main *config, char *str, int color);
 
 // map_check.2.c
-int		check_is_wall(char block);
+int	check_is_wall(char block);
 void	exit_minimum_point(int return_code);
-int		check_minimum_point(t_main *config);
-int		end_hook(t_main *config);
-int		check_move(t_main *config, int x, int y, char next_move);
+int	check_minimum_point(t_main *config);
+int	end_hook(t_main *config);
+int	check_move(t_main *config, int x, int y, char next_move);
 
 // map_check.c
-int		check_width(t_main *config);
+int	check_width(t_main *config);
 void	count_point(t_main *config, char point, int x, int y);
-int		check_wrong_point(t_main *config);
-int		check_surrounded(t_main *config);
+int	check_wrong_point(t_main *config);
+int	check_surrounded(t_main *config);
 void	check_map(t_main *config);
 
 // parse.c
-int		check_ext(char *file_name);
-char	*get_all_file(char *file_name);
-void	parse_map(t_main *config, char *file_name);
+int	check_ext(t_main *config);
+char	*get_all_file(t_main *config);
+void	parse_map(t_main *config);
 
 // parse_wall.c
-int		parse_init_place_9(t_main *config, int i, int j);
+int	parse_init_place_9(t_main *config, int i, int j);
 void	parse_init_new_map(t_main *config);
 void	get_direction(t_main *config, int dir[4], int i, int j);
 void	check_wall_nearby(t_main *config, int i, int j);
 void	parse_wall(t_main *config);
 
 // so_long.c
-int		move_win(t_main *config, int x, int y);
-int		main(int argc, char **argv);
+int	move_win(t_main *config, int x, int y);
+int	main(int argc, char **argv);
 
 /* ########################################################################## */
 

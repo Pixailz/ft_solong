@@ -3,13 +3,16 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 
 ## TODO
 
-### game design
+### ui
 
-1. add level
+1. add animation
 
-### usage
+### Sanity
 
-1. write usage
+1. check everything is working fine
+    - memory leaks
+	- new levels
+	- new log
 
 ## sprite
 

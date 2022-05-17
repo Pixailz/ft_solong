@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/16 19:29:23 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 08:31:15 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	draw_block(t_main *config, int x, int y)
 		put_image(config, config->textures->ground, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'E')
 		put_image(config, config->textures->door_close, y - 1, x - 1);
+	else if (config->map_new[x][y] == 'i')
+		put_image(config, config->textures->door_between, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'e')
 		put_image(config, config->textures->door_open, y - 1, x - 1);
 	else if (config->map_new[x][y] == 'P' || config->map_new[x][y] == 'p')

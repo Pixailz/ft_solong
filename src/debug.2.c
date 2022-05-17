@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:20:57 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 22:40:16 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:43:20 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	debug_print_keycode_release(int keycode)
 		ft_printf("   known_name : KEY_R\n");
 	if (keycode == KEY_ESC)
 		ft_printf("   known_name : KEY_ESC\n");
-	ft_printf("   keycode : %x\n", keycode);
+	ft_printf("   keycode : 0x%x\n", keycode);
 }
 
 void	debug_print_keycode_press(t_main *config, int keycode)
