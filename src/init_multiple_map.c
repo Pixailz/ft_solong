@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 20:43:13 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 01:43:12 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	pre_init(t_main *config)
 	config->texture_loaded = 0;
 	config->retry = 1;
 	config->p_current_map = 0;
+	config->p_total_step = 0;
 }
 
 void	init_multiple_map(t_main *config, char **argv)

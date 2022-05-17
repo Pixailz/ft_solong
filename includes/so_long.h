@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/18 01:17:24 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 01:49:17 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 /* ###### */
 
 # ifndef DEBUG
-#  define DEBUG 0
+#  define DEBUG 1
 # endif
 
 // UI
@@ -158,6 +158,7 @@ typedef struct s_main {
 	int			p_key;
 	int			p_win;
 	int			p_step;
+	int			p_total_step;
 	int			p_last_step;
 	int			p_current_map;
 	int			width;
@@ -169,7 +170,6 @@ typedef struct s_main {
 	int			nb_figth;
 	int			nb_map;
 	char		**map_str;
-	char		*map_1_str;
 	t_enemy		**enemy;
 	t_log		*log;
 }				t_main;
@@ -204,6 +204,7 @@ void	draw_enemy(t_main *config, int x, int y);
 
 // draw_str.2.c
 void	print_continue(t_main *config);
+void	print_step_total(t_main *config);
 
 // draw_str.c
 void	print_close(t_main *config);

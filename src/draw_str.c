@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:19:15 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 09:50:12 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 01:45:51 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static	void	print_win_step(t_main *config)
 	}
 	free(tmp);
 	free(tmp2);
+	print_step_total(config);
 }
 
 void	print_before_win_loose(t_main *config)
