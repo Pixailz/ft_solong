@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 00:12:49 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:40:53 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,18 @@ void	free_log(t_main *config)
 		i++;
 	}
 	free(config->log->line);
+}
+
+void	free_multiple_map(t_main *config)
+{
+	int	i;
+
+	i = 0;
+	while (i < config->nb_map)
+	{
+		free(config->map_str[i]);
+		config->map_str[i++] = NULL;
+	}
+	free(config->map_str);
+	config->map_str = NULL;
 }

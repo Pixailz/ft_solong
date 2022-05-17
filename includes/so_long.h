@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 10:08:52 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:41:07 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ void	print_before_win_loose(t_main *config);
 void	free_texture_walls(t_main *config);
 void	free_texture_health(t_main *config);
 void	free_log(t_main *config);
+void	free_multiple_map(t_main *config);
 
 // free.c
 void	free_texture(t_main *config, void *texture);
