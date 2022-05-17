@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/16 19:32:38 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:12:07 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static	void	put_health_bar(t_main *config, void *img, int x, int y)
 				+ 1, ((y * BLOCK_SIZE) + (LOG_LENGTH * LOG_FONT_HEIGTH)) + 1);
 }
 
-static	void	draw_health_bar(t_main *config, int x, int y, int current_percent)
+static	void	draw_health_bar(t_main *config, int x, int y, int
+current_percent)
 {
 	if (current_percent > 95)
 		put_health_bar(config, config->textures->health_10, x, y);
