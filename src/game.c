@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:35:50 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 22:39:31 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 01:00:49 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,13 @@ void	open_door(t_main *config)
 
 void	put_steps(t_main *config)
 {
-	char		*tmp;
-	char		*tmp_nbr;
+	char	*tmp;
+	char	*step;
 
-	if (config->p_step)
-	{
-		tmp_nbr = ft_itoa(config->p_step - \
-							(config->p_step - config->p_last_step));
-		tmp = ft_strjoin("player step : ", tmp_nbr);
-		mlx_string_put(config->mlx, config->win, \
-					0, 14, 0x000000, tmp);
-		free(tmp_nbr);
-		free(tmp);
-	}
-	tmp_nbr = ft_itoa(config->p_step);
-	tmp = ft_strjoin("player step : ", tmp_nbr);
-	mlx_string_put(config->mlx, config->win, \
-					0, 14, 0xffffff, tmp);
-	free(tmp_nbr);
+	step = ft_itoa(config->p_step);
+	tmp = ft_strjoin("player steps: ", step);
+	free(step);
+	put_str_log(config, tmp, WHITE);
 	free(tmp);
 }
 

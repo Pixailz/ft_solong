@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 22:08:37 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:18:45 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,10 @@ void	init_hook(t_main *config)
 void	init_main(t_main *config)
 {
 	config->mlx = mlx_init();
-	config->win = mlx_new_window(config->mlx, \
-							config->width * BLOCK_SIZE, \
-							(config->height * BLOCK_SIZE) + INFO_PADDING, \
-							WIN_TITLE);
+	config->win = mlx_new_window(config->mlx, config->width * BLOCK_SIZE, \
+	(config->height * BLOCK_SIZE) + (LOG_LENGTH * LOG_FONT_HEIGTH), WIN_TITLE);
 	init_hook(config);
+	init_log(config);
 	config->enemy_loaded = 0;
 	config->map_new_loaded = 0;
 	config->p_key = 0;

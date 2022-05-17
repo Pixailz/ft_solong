@@ -3,7 +3,14 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 
 ## TODO
 
+### game design
+
 1. add level
+
+### ui
+
+1. fix little screen cuting words
+2. separator for log
 
 ## sprite
 

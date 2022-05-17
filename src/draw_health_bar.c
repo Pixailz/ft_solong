@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 17:18:40 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:32:38 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 void	put_health_bar(t_main *config, void *img, int x, int y)
 {
-	mlx_put_image_to_window(config->mlx, config->win, img, \
-							(x * BLOCK_SIZE) + 1, \
-							((y * BLOCK_SIZE) + INFO_PADDING) + 1);
+	mlx_put_image_to_window(config->mlx, config->win, img, (x * BLOCK_SIZE) \
+				+ 1, ((y * BLOCK_SIZE) + (LOG_LENGTH * LOG_FONT_HEIGTH)) + 1);
 }
 
 void	draw_health_bar(t_main *config, int x, int y, int current_percent)

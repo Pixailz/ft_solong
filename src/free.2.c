@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 16:48:52 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 00:12:49 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,20 @@ void	free_texture_health(t_main *config)
 	free_texture(config, config->textures->health_03);
 	free_texture(config, config->textures->health_02);
 	free_texture(config, config->textures->health_01);
+}
+
+void	free_log(t_main *config)
+{
+	int	i;
+
+	i = 0;
+	while (i < LOG_LENGTH)
+	{
+		free(config->log->line[i]->str);
+		config->log->line[i]->str = NULL;
+		free(config->log->line[i]);
+		config->log->line[i] = NULL;
+		i++;
+	}
+	free(config->log->line);
 }

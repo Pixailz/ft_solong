@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 22:42:01 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 03:32:15 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,24 @@
 /* ###### */
 
 # ifndef DEBUG
-#  define DEBUG	0
+#  define DEBUG 0
 # endif
 
 // UI
-# define WIN_TITLE		"SO LONG..."
-# define INFO_PADDING	74
-# define BLOCK_SIZE		32
-# define FPS 			60
+# define WIN_TITLE			"SO LONG..."
+# define BLOCK_SIZE			32
+# define FPS 				60
+
+// LOG
+# define LOG_LENGTH			15
+# define LOG_FONT_HEIGTH	15
+# define LOG_FONT_WIDTH		5
+# define LOG_BLOCK_LENGTH	6
+# define BLACK				0x000000
+# define WHITE				0xffffff
+# define RED				0xff0000
+# define GREEN				0x00ff00
+# define BLUE				0x0000ff
 
 // GAME
 # define DEFAULT_PLAYER_HEALTH	5
@@ -115,6 +125,17 @@ typedef struct s_enemy {
 	int		pos_y;
 }				t_enemy;
 
+typedef struct s_line {
+	int		color;
+	char	*str;
+}				t_line;
+
+typedef struct s_log {
+	t_line	**line;
+	int		current_pos;
+	int		max_length;
+}				t_log;
+
 typedef struct s_main {
 	void		*mlx;
 	void		*win;
@@ -143,6 +164,7 @@ typedef struct s_main {
 	int			nb_door;
 	int			nb_key;
 	t_enemy		**enemy;
+	t_log		*log;
 }				t_main;
 
 /* ########################################################################## */
@@ -249,6 +271,11 @@ void	debug_print_player_info(t_main *config, int x, int y);
 void	debug_print_keycode_press(t_main *config, int keycode);
 void	debug_print_keycode_release(int keycode);
 void	debug_print_inited(t_main *config);
+
+// log.c
+void	init_log(t_main *config);
+void	free_log(t_main *config);
+void	put_str_log(t_main *config, char *str, int color);
 
 /* ########################################################################## */
 

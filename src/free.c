@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 20:43:54 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:03:19 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	free_entry_point(t_main *config)
 		free_enemy(config);
 	if (config->texture_loaded)
 		free_textures(config);
+	free_log(config);
 	mlx_destroy_window(config->mlx, config->win);
 	mlx_destroy_display(config->mlx);
 	free(config->mlx);

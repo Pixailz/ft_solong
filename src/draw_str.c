@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:19:15 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 22:01:51 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 03:24:39 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	print_close(t_main *config)
 {
 	ft_printf("Closing game\n");
-	mlx_string_put(config->mlx, config->win, 0, 5 * 14, 0xff0000, \
-															"Closing game");
+	put_str_log(config, "Closing game", RED);
 	config->retry = 0;
 	config->is_finished = 1;
 	mlx_loop_end(config->mlx);
@@ -25,33 +24,52 @@ void	print_close(t_main *config)
 void	print_retry(t_main *config)
 {
 	ft_printf("Restart game\n");
-	mlx_string_put(config->mlx, config->win, 0, 5 * 14, 0xff0000, \
-															"Restart game");
+	put_str_log(config, "Restart game", GREEN);
 	mlx_loop_end(config->mlx);
 }
 
 void	retry_choose(t_main *config)
 {
 	ft_printf("Press R to retry ESC to exit\n");
-	mlx_string_put(config->mlx, config->win, 0, 3 * 14, 0x00ff00, \
-											"Press R to retry,");
-	mlx_string_put(config->mlx, config->win, 0, 4 * 14, 0x00ff00, \
-											"ESC to exit");
+	if (config->width == 5)
+	{
+		put_str_log(config, "Press R to retry", GREEN);
+		put_str_log(config, "ESC to exit", GREEN);
+	}
+	put_str_log(config, "Press R to retry ESC to exit", GREEN);
+}
+
+void	print_win_step(t_main *config)
+{
+	char	*tmp;
+	char	*tmp2;
+
+	ft_printf("Player has win, step used: %d\n", config->p_step);
+	if (config->width == 5)
+	{
+		put_str_log(config, "Player has win,", GREEN);
+		tmp = ft_itoa(config->p_step);
+		tmp2 = ft_strjoin("Step used: ", tmp);
+		put_str_log(config, tmp2, GREEN);
+	}
+	else
+	{
+		tmp = ft_itoa(config->p_step);
+		tmp2 = ft_strjoin("Player has win, step used: ", tmp);
+		put_str_log(config, tmp2, GREEN);
+	}
+	free(tmp);
+	free(tmp2);
 }
 
 void	print_before_win_loose(t_main *config)
 {
 	if (config->p_win == 1)
-	{
-		ft_printf("player has win with %d steps\n", config->p_step);
-		mlx_string_put(config->mlx, config->win, 0, 2 * 14, 0x00ff00, \
-															"Player has win");
-	}
+		print_win_step(config);
 	else if (config->p_win == -1)
 	{
 		ft_printf("player has loose\n");
-		mlx_string_put(config->mlx, config->win, 0, 2 * 14, 0xff0000, \
-															"Player has loose");
+		put_str_log(config, "player has loose", RED);
 	}
 	retry_choose(config);
 }
