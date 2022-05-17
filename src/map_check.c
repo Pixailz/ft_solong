@@ -26,7 +26,7 @@ int	check_width(t_main *config)
 	return (1);
 }
 
-void	count_point(t_main *config, char point, int x, int y)
+static	void	count_point(t_main *config, char point, int x, int y)
 {
 	if (point == 'E')
 		config->nb_door++;

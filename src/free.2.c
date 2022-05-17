@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 20:40:53 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 01:13:17 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,10 @@ void	free_multiple_map(t_main *config)
 	}
 	free(config->map_str);
 	config->map_str = NULL;
+}
+
+void	free_empty_file(t_main *config)
+{
+	free_multiple_map(config);
+	ft_error("Map file is empty");
 }

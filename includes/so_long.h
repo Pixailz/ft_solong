@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 20:49:53 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 01:17:24 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ void	free_texture_walls(t_main *config);
 void	free_texture_health(t_main *config);
 void	free_log(t_main *config);
 void	free_multiple_map(t_main *config);
+void	free_empty_file(t_main *config);
 
 // free.c
 void	free_texture(t_main *config, void *texture);
@@ -258,10 +259,6 @@ void	put_log_duel_kill(t_main *config, int x, int y);
 void	init_log(t_main *config);
 void	put_str_log(t_main *config, char *str, int color);
 
-// map_check.3.c
-void	check_first_part(t_main *config);
-void	check_second_part(t_main *config);
-
 // map_check.2.c
 int		check_is_wall(char block);
 void	exit_minimum_point(int return_code);
@@ -269,12 +266,15 @@ int		check_minimum_point(t_main *config);
 int		end_hook(t_main *config);
 int		check_move(t_main *config, int x, int y, char next_move);
 
+// map_check.3.c
+void	check_first_part(t_main *config);
+void	check_second_part(t_main *config);
+
 // map_check.c
-void	check_map(t_main *config);
 int		check_width(t_main *config);
-void	count_point(t_main *config, char point, int x, int y);
 int		check_wrong_point(t_main *config);
 int		check_surrounded(t_main *config);
+void	check_map(t_main *config);
 
 // parse.c
 void	parse_map(t_main *config);
@@ -285,7 +285,6 @@ void	parse_wall(t_main *config);
 
 // so_long.c
 int		move_win(t_main *config, int x, int y);
-int		main(int argc, char **argv);
 
 /* ########################################################################## */
 

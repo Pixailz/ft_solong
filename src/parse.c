@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:32:01 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 09:34:23 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 01:11:16 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static	char	*get_all_file(t_main *config)
 	if (file == -1)
 		ft_error(config->map_str[config->p_current_map]);
 	line = get_next_line(file);
+	if (!line)
+		free_empty_file(config);
 	all_file = malloc(sizeof(char) * ft_strlen(line) + 1);
 	all_file = ft_strcpy(all_file, line);
 	while (line)
