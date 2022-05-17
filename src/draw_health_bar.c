@@ -13,13 +13,13 @@
 #include "so_long.h"
 #include <stdio.h>
 
-void	put_health_bar(t_main *config, void *img, int x, int y)
+static	void	put_health_bar(t_main *config, void *img, int x, int y)
 {
 	mlx_put_image_to_window(config->mlx, config->win, img, (x * BLOCK_SIZE) \
 				+ 1, ((y * BLOCK_SIZE) + (LOG_LENGTH * LOG_FONT_HEIGTH)) + 1);
 }
 
-void	draw_health_bar(t_main *config, int x, int y, int current_percent)
+static	void	draw_health_bar(t_main *config, int x, int y, int current_percent)
 {
 	if (current_percent > 95)
 		put_health_bar(config, config->textures->health_10, x, y);
@@ -53,7 +53,7 @@ void	draw_player(t_main *config, int x, int y)
 									DEFAULT_PLAYER_HEALTH);
 }
 
-int	get_enemy_id(t_main *config, int y, int x)
+static	int	get_enemy_id(t_main *config, int y, int x)
 {
 	int	i;
 

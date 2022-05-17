@@ -38,7 +38,7 @@ void	free_enemy(t_main *config)
 	config->enemy = NULL;
 }
 
-t_enemy	*init_get_enemy(int i, int j)
+static	t_enemy	*init_get_enemy(int i, int j)
 {
 	t_enemy	*tmp;
 

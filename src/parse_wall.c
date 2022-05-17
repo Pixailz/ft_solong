@@ -37,7 +37,7 @@ int	parse_init_place_9(t_main *config, int i, int j)
 	return (0);
 }
 
-void	parse_init_new_map(t_main *config)
+static	void	parse_init_new_map(t_main *config)
 {
 	int	i;
 	int	j;
@@ -62,7 +62,7 @@ void	parse_init_new_map(t_main *config)
 	config->map_loaded = 0;
 }
 
-void	get_direction(t_main *config, int dir[4], int i, int j)
+static	void	get_direction(t_main *config, int dir[4], int i, int j)
 {
 	if (check_is_wall(config->map_new[i - 1][j]))
 		dir[0] = 1;
@@ -74,7 +74,7 @@ void	get_direction(t_main *config, int dir[4], int i, int j)
 		dir[3] = 1;
 }
 
-void	check_wall_nearby(t_main *config, int i, int j)
+static	void	check_wall_nearby(t_main *config, int i, int j)
 {
 	int	dir[4];
 

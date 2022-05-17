@@ -30,7 +30,7 @@ void	init_log(t_main *config)
 	}
 }
 
-void	put_log_str_line(t_main *config, int pos)
+static	void	put_log_str_line(t_main *config, int pos)
 {
 	mlx_string_put(config->mlx, config->win, 0, \
 				((pos + 1) * LOG_FONT_HEIGTH) - 5, \
@@ -40,7 +40,7 @@ void	put_log_str_line(t_main *config, int pos)
 		config->log->current_pos++;
 }
 
-void	put_log_str_black(t_main *config)
+static	void	put_log_str_black(t_main *config)
 {
 	int		i;
 
@@ -61,7 +61,7 @@ void	put_log_str_black(t_main *config)
 	}
 }
 
-void	put_log_str_defil(t_main *config)
+static	void	put_log_str_defil(t_main *config)
 {
 	int	i;
 

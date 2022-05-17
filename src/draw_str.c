@@ -28,7 +28,7 @@ void	print_retry(t_main *config)
 	mlx_loop_end(config->mlx);
 }
 
-void	retry_choose(t_main *config)
+static	void	retry_choose(t_main *config)
 {
 	if (config->p_current_map + 1 == config->nb_map)
 		put_str_log(config, "No map left.", RED);
@@ -42,7 +42,7 @@ void	retry_choose(t_main *config)
 		put_str_log(config, "Press R to retry ESC to exit", GREEN);
 }
 
-void	print_win_step(t_main *config)
+static	void	print_win_step(t_main *config)
 {
 	char	*tmp;
 	char	*tmp2;

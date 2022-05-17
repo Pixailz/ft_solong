@@ -13,7 +13,7 @@
 #include "so_long.h"
 #include <fcntl.h>
 
-int	check_ext(t_main *config)
+static	int	check_ext(t_main *config)
 {
 	int	size;
 
@@ -26,7 +26,7 @@ int	check_ext(t_main *config)
 	return (0);
 }
 
-char	*get_all_file(t_main *config)
+static	char	*get_all_file(t_main *config)
 {
 	int		file;
 	char	*line;

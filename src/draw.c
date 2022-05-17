@@ -19,7 +19,7 @@ void	put_image(t_main *config, void *img, int x, int y)
 												(LOG_LENGTH * LOG_FONT_HEIGTH));
 }
 
-void	draw_wall_block_oriented(t_main *config, int x, int y)
+static	void	draw_wall_block_oriented(t_main *config, int x, int y)
 {
 	if (config->map_new[x][y] == 'N')
 		put_image(config, config->textures->wall_3_n, y - 1, x - 1);
@@ -47,7 +47,7 @@ void	draw_wall_block_oriented(t_main *config, int x, int y)
 		put_image(config, config->textures->wall_2_lr, y - 1, x - 1);
 }
 
-void	draw_block_wall(t_main *config, int x, int y)
+static	void	draw_block_wall(t_main *config, int x, int y)
 {
 	draw_wall_block_oriented(config, x, y);
 	if (config->map_new[x][y] == '1')
@@ -60,7 +60,7 @@ void	draw_block_wall(t_main *config, int x, int y)
 		put_image(config, config->textures->wall_4, y - 1, x - 1);
 }
 
-void	draw_block(t_main *config, int x, int y)
+static	void	draw_block(t_main *config, int x, int y)
 {
 	if (config->map_new[x][y] == '0')
 		put_image(config, config->textures->ground, y - 1, x - 1);

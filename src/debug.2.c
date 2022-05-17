@@ -54,7 +54,7 @@ void	debug_print_keycode_press(t_main *config, int keycode)
 	ft_printf("keypress\n");
 }
 
-void	debug_print_map(t_main *config)
+static	void	debug_print_map(t_main *config)
 {
 	int	i;
 	int	j;

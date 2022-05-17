@@ -13,7 +13,7 @@
 #include "so_long.h"
 #include <stdio.h>
 
-void	duel_deal_damage(t_main *config, t_enemy *enemy)
+static	void	duel_deal_damage(t_main *config, t_enemy *enemy)
 {
 	config->p_health -= DEFAULT_ENEMY_DAMAGE;
 	enemy->health -= DEFAULT_PLAYER_DAMAGE;
@@ -31,7 +31,7 @@ void	duel_deal_damage(t_main *config, t_enemy *enemy)
 	}
 }
 
-void	duel_check_direction(t_main *config, int i, int j)
+static	void	duel_check_direction(t_main *config, int i, int j)
 {
 	if (config->enemy[i]->pos_x == config->p_x + j && \
 		config->enemy[i]->pos_y == config->p_y && \
@@ -49,7 +49,7 @@ void	duel_check_direction(t_main *config, int i, int j)
 	}
 }
 
-void	get_nearby_enemy(t_main *config)
+static	void	get_nearby_enemy(t_main *config)
 {
 	int	i;
 	int	j;

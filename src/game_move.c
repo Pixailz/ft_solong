@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	move_player_increment(t_main *config, int x, int y)
+static	void	move_player_increment(t_main *config, int x, int y)
 {
 	config->p_x += x;
 	config->p_y += y;
@@ -22,7 +22,7 @@ void	move_player_increment(t_main *config, int x, int y)
 		print_before_win_loose(config);
 }
 
-void	move_player(t_main *config, int x, int y)
+static	void	move_player(t_main *config, int x, int y)
 {
 	int			return_code;
 

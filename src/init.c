@@ -28,7 +28,7 @@ void	*texture_load(t_main *config, char *path)
 	return (tmp);
 }
 
-void	init_texture_walls(t_main *config)
+static	void	init_texture_walls(t_main *config)
 {
 	config->textures->wall_0 = texture_load(config, "res/img/wall_0.xpm");
 	config->textures->wall_1_n = texture_load(config, "res/img/wall_1_n.xpm");
@@ -48,7 +48,7 @@ void	init_texture_walls(t_main *config)
 	config->textures->wall_4 = texture_load(config, "res/img/wall_4.xpm");
 }
 
-void	init_texture(t_main *config)
+static	void	init_texture(t_main *config)
 {
 	init_texture_walls(config);
 	init_texture_health(config);
@@ -66,7 +66,7 @@ void	init_texture(t_main *config)
 	config->textures->key = texture_load(config, "res/img/key.xpm");
 }
 
-void	init_hook(t_main *config)
+static	void	init_hook(t_main *config)
 {
 	mlx_hook(config->win, 33, (1L << 17), end_hook, config);
 	mlx_hook(config->win, 2, (1L << 0), keypress, config);

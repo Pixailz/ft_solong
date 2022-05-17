@@ -19,7 +19,7 @@ void	free_texture(t_main *config, void *texture)
 	config->texture_loaded--;
 }
 
-void	free_map_new(t_main *config)
+static	void	free_map_new(t_main *config)
 {
 	int	i;
 
@@ -51,7 +51,7 @@ void	free_map(t_main *config)
 	config->map_loaded = 0;
 }
 
-void	free_textures(t_main *config)
+static	void	free_textures(t_main *config)
 {
 	free_texture_walls(config);
 	free_texture_health(config);

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	check_width(t_main *config)
+static	int	check_width(t_main *config)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	check_width(t_main *config)
 	return (1);
 }
 
-void	count_point(t_main *config, char point, int x, int y)
+static	void	count_point(t_main *config, char point, int x, int y)
 {
 	if (point == 'E')
 		config->nb_door++;
@@ -42,7 +42,7 @@ void	count_point(t_main *config, char point, int x, int y)
 		config->nb_key++;
 }
 
-int	check_wrong_point(t_main *config)
+static	int	check_wrong_point(t_main *config)
 {
 	int		i;
 	int		j;
@@ -65,7 +65,7 @@ int	check_wrong_point(t_main *config)
 	return (1);
 }
 
-int	check_surrounded(t_main *config)
+static	int	check_surrounded(t_main *config)
 {
 	int	i;
 	int	j;
