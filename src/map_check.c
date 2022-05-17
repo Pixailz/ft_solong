@@ -6,13 +6,13 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 04:27:56 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 16:05:53 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:50:05 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static	int	check_width(t_main *config)
+int	check_width(t_main *config)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ static	int	check_width(t_main *config)
 	return (1);
 }
 
-static	void	count_point(t_main *config, char point, int x, int y)
+void	count_point(t_main *config, char point, int x, int y)
 {
 	if (point == 'E')
 		config->nb_door++;
@@ -42,7 +42,7 @@ static	void	count_point(t_main *config, char point, int x, int y)
 		config->nb_key++;
 }
 
-static	int	check_wrong_point(t_main *config)
+int	check_wrong_point(t_main *config)
 {
 	int		i;
 	int		j;
@@ -65,7 +65,7 @@ static	int	check_wrong_point(t_main *config)
 	return (1);
 }
 
-static	int	check_surrounded(t_main *config)
+int	check_surrounded(t_main *config)
 {
 	int	i;
 	int	j;
@@ -90,27 +90,6 @@ static	int	check_surrounded(t_main *config)
 
 void	check_map(t_main *config)
 {
-	int	return_code;
-
-	if (!check_wrong_point(config))
-	{
-		free_entry_point(config);
-		ft_error("Wrong point on the map");
-	}
-	if (!check_width(config))
-	{
-		free_entry_point(config);
-		ft_error("Map is not a square");
-	}
-	if (!check_surrounded(config))
-	{
-		free_entry_point(config);
-		ft_error("Map no surrounded");
-	}
-	return_code = check_minimum_point(config);
-	if (return_code)
-	{
-		free_entry_point(config);
-		exit_minimum_point(return_code);
-	}
+	check_first_part(config);
+	check_second_part(config);
 }

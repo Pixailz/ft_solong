@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 20:41:07 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:49:53 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,10 @@ void	put_log_duel_kill(t_main *config, int x, int y);
 void	init_log(t_main *config);
 void	put_str_log(t_main *config, char *str, int color);
 
+// map_check.3.c
+void	check_first_part(t_main *config);
+void	check_second_part(t_main *config);
+
 // map_check.2.c
 int		check_is_wall(char block);
 void	exit_minimum_point(int return_code);
@@ -267,6 +271,10 @@ int		check_move(t_main *config, int x, int y, char next_move);
 
 // map_check.c
 void	check_map(t_main *config);
+int		check_width(t_main *config);
+void	count_point(t_main *config, char point, int x, int y);
+int		check_wrong_point(t_main *config);
+int		check_surrounded(t_main *config);
 
 // parse.c
 void	parse_map(t_main *config);
