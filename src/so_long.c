@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:00:32 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 09:42:35 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 01:32:22 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	move_win(t_main *config, int x, int y)
 {
 	config->p_win = 1;
 	config->map_new[config->p_x + x][config->p_y + y] = 'e';
-	config->map_new[config->p_x][config->p_y] = '0';
+	if (config->map_new[config->p_x][config->p_y] == 'p')
+		config->map_new[config->p_x][config->p_y] = 'k';
+	else
+		config->map_new[config->p_x][config->p_y] = '0';
 	return (2);
 }
 
