@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/18 01:49:17 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/18 02:31:11 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define BLACK				0x000000
 # define WHITE				0xffffff
 # define RED				0xff0000
+# define DARK_RED			0x600101
 # define GREEN				0x00ff00
 # define BLUE				0x0000ff
 
@@ -55,6 +56,9 @@
 # define DEFAULT_PLAYER_DAMAGE	1
 # define DEFAULT_ENEMY_HEALTH	3
 # define DEFAULT_ENEMY_DAMAGE	0.25
+
+// ASCII ART
+# define TIME_BETWEEN_PIXEL		1
 
 // KEYBOARD
 	// DEFAULT
@@ -287,6 +291,7 @@ void	parse_wall(t_main *config);
 // so_long.c
 int		move_win(t_main *config, int x, int y);
 
+void	print_ascii_art(t_main *config);
 /* ########################################################################## */
 
 #endif
