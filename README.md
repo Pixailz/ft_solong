@@ -10,9 +10,10 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 ### Sanity
 
 1. check everything is working fine
-    - memory leaks
+	- memory leaks
 	- new levels
 	- new log
+2. remove memory leaks (res/img/key.xpm)
 
 ## sprite
 
