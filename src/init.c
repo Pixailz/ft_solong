@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 09:32:41 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:16:09 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	*texture_load(t_main *config, char *path)
 	tmp = mlx_xpm_file_to_image(config->mlx, path, &i, &i);
 	if (!tmp)
 	{
+		config->retry = 0;
 		free_entry_point(config);
 		ft_printf("ERROR: %s not found\n", path);
 		exit(-1);
