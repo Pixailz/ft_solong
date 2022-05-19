@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:32:01 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/18 01:11:16 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:26:24 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,26 @@ static	int	check_ext(t_main *config)
 	return (0);
 }
 
+static	int	open_file(t_main *config)
+{
+	int	file;
+
+	file = open(config->map_str[config->p_current_map], O_RDONLY);
+	if (file == -1)
+	{
+		free_multiple_map(config);
+		ft_error("Map not found");
+	}
+	return (file);
+}
+
 static	char	*get_all_file(t_main *config)
 {
 	int		file;
 	char	*line;
 	char	*all_file;
 
-	file = open(config->map_str[config->p_current_map], O_RDONLY);
-	if (file == -1)
-		ft_error(config->map_str[config->p_current_map]);
+	file = open_file(config);
 	line = get_next_line(file);
 	if (!line)
 		free_empty_file(config);
