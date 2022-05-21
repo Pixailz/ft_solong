@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/18 02:31:11 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/21 21:43:40 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 # define DEFAULT_ENEMY_DAMAGE	0.25
 
 // ASCII ART
-# define TIME_BETWEEN_PIXEL		1
+# define TIME_BETWEEN_PIXEL		0.00
 
 // KEYBOARD
 	// DEFAULT
@@ -202,9 +202,33 @@ void	debug_print_map_with_9(t_main *config);
 void	put_image(t_main *config, void *img, int x, int y);
 int		draw_map(t_main *config);
 
+// draw_e.c
+void	print_ascii_e_end(int global_offset, t_main *config);
+void	print_ascii_e(int global_offset, t_main *config);
+void	print_ascii_e_shadow(int global_offset, t_main *config);
+
 // draw_health_bar.c
 void	draw_player(t_main *config, int x, int y);
 void	draw_enemy(t_main *config, int x, int y);
+
+// draw_l.c
+void	print_ascii_l_shadow(int global_offset, t_main *config);
+void	print_ascii_l(int global_offset, t_main *config);
+
+// draw_o.c
+void	print_ascii_o(int global_offset, t_main *config, int offset);
+void	print_ascii_o_end(int global_offset, t_main *config, int offset);
+void	print_ascii_o_shadow(int global_offset, t_main *config, int offset);
+
+// draw_pixel_art.c
+void	print_ascii_art_pixel(t_main *config, int x, int y, int color);
+void	print_limits_pixel_art(t_main *config);
+void	print_ascii_art_loose(t_main *config);
+
+// draw_s.c
+void	print_ascci_s_mid(int global_offset, t_main *config);
+void	print_ascii_s(int global_offset, t_main *config);
+void	print_ascii_s_shadow(int global_offset, t_main *config);
 
 // draw_str.2.c
 void	print_continue(t_main *config);
@@ -291,7 +315,6 @@ void	parse_wall(t_main *config);
 // so_long.c
 int		move_win(t_main *config, int x, int y);
 
-void	print_ascii_art(t_main *config);
 /* ########################################################################## */
 
 #endif
