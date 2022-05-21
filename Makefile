@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/18 01:39:51 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/21 21:45:29 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ TARGET			:= so_long
 RM				:= rm -rf
 CC				:= gcc
 MAKE			:= make -C
-VERSION			:= 2.1.5
+VERSION			:= 2.1.6
 $(eval export MAIN=1)
 
 ifneq ($(PADDING),30)
