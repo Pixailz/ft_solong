@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:00:32 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/18 01:56:01 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/21 20:41:38 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int	main(int argc, char **argv)
 		if (config.nb_enemy > 0)
 			init_enemy(&config);
 		parse_wall(&config);
-		print_ascii_art(&config);
+		print_ascii_art_loose(&config);
+		usleep(10000000);
+		exit(1);
 		mlx_loop(config.mlx);
 		usleep(0.25 * 1000000);
 		free_entry_point(&config);
