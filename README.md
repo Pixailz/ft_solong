@@ -5,7 +5,9 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 
 ### ui
 
-1. add animation
+1. add loose / win screen
+    - center loose / win with `global_offset`
+    - make win ascii art
 
 ### Sanity
 
@@ -13,7 +15,6 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 	- memory leaks
 	- new levels
 	- new log
-2. remove memory leaks (res/img/key.xpm)
 
 ## sprite
 
