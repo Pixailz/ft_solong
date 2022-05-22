@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:00:32 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 03:33:02 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 12:58:03 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	pre_init(&config);
 	while (config.retry)
 	{
-		ft_printf("Starting games\n");
+		ft_printf("Starting game\n");
 		parse_map(&config);
 		init_main(&config);
 		if (config.nb_enemy > 0)
