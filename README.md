@@ -14,6 +14,10 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 	- new levels
 	- new log
 
+### CROSS PLATFORM
+
+1. make game working on Windows :)
+
 ## sprite
 
 ### Environments
