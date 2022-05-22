@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 01:54:29 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 03:30:29 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:16:55 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ void	print_ascii_art_pixel(t_main *config, int x, int y, int color)
 		while (j < BLOCK_SIZE / PIXEL_LENGTH)
 		{
 			mlx_pixel_put(config->mlx, config->win,
-				(x * (BLOCK_SIZE / PIXEL_LENGTH)) + j + config->ascii_art_offset,
-				((y * (BLOCK_SIZE / PIXEL_LENGTH))) + i + \
+				((x + config->ascii_art_offset) * \
+				(BLOCK_SIZE / PIXEL_LENGTH)) + j, \
+				(((y + (config->height / 2)) * \
+				(BLOCK_SIZE / PIXEL_LENGTH))) + \
 				(LOG_LENGTH * LOG_FONT_HEIGTH) + \
-				(PIXEL_LENGTH * ((config->height / 2) - 1)), color);
+				(PIXEL_LENGTH * ((config->height / 2) - 1)) + i, color);
 			j++;
 		}
 		j = 0;
@@ -64,7 +66,6 @@ void	print_ascii_art_loose(t_main *config)
 void	print_ascii_art_win(t_main *config)
 {
 	config->ascii_art_offset = print_ascii_get_offset(config, 3);
-	ft_printf("global_offset: %d\n", config->ascii_art_offset);
 	print_ascii_w(config);
 	print_ascii_w_shadow(config);
 	print_ascii_i(config);
