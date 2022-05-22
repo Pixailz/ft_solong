@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:00:32 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/21 20:41:38 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 03:33:02 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ int	move_win(t_main *config, int x, int y)
 	else
 		config->map_new[config->p_x][config->p_y] = '0';
 	return (2);
+}
+
+void	post_game(t_main *config)
+{
+	if (config->p_win == 1)
+		print_ascii_art_win(config);
+	else if (config->p_win == -1)
+		print_ascii_art_loose(config);
 }
 
 int	main(int argc, char **argv)
@@ -44,11 +52,7 @@ int	main(int argc, char **argv)
 		if (config.nb_enemy > 0)
 			init_enemy(&config);
 		parse_wall(&config);
-		print_ascii_art_loose(&config);
-		usleep(10000000);
-		exit(1);
 		mlx_loop(config.mlx);
-		usleep(0.25 * 1000000);
 		free_entry_point(&config);
 	}
 	return (0);

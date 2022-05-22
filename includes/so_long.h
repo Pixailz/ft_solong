@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/21 21:43:40 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 03:33:51 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,18 @@
 # define RED				0xff0000
 # define DARK_RED			0x600101
 # define GREEN				0x00ff00
+# define DARK_GREEN			0x008400
 # define BLUE				0x0000ff
 
 // GAME
-# define DEFAULT_PLAYER_HEALTH	5
+# define DEFAULT_PLAYER_HEALTH	1
 # define DEFAULT_PLAYER_DAMAGE	1
 # define DEFAULT_ENEMY_HEALTH	3
-# define DEFAULT_ENEMY_DAMAGE	0.25
+# define DEFAULT_ENEMY_DAMAGE	1
 
 // ASCII ART
 # define TIME_BETWEEN_PIXEL		0.00
+# define PIXEL_LENGTH			8
 
 // KEYBOARD
 	// DEFAULT
@@ -167,6 +169,7 @@ typedef struct s_main {
 	int			p_current_map;
 	int			width;
 	int			height;
+	int			ascii_art_offset;
 	int			nb_player;
 	int			nb_enemy;
 	int			nb_door;
@@ -203,32 +206,41 @@ void	put_image(t_main *config, void *img, int x, int y);
 int		draw_map(t_main *config);
 
 // draw_e.c
-void	print_ascii_e_end(int global_offset, t_main *config);
-void	print_ascii_e(int global_offset, t_main *config);
-void	print_ascii_e_shadow(int global_offset, t_main *config);
+void	print_ascii_e_end(t_main *config);
+void	print_ascii_e(t_main *config);
+void	print_ascii_e_shadow(t_main *config);
 
 // draw_health_bar.c
 void	draw_player(t_main *config, int x, int y);
 void	draw_enemy(t_main *config, int x, int y);
 
+// draw_i.c
+void	print_ascii_i(t_main *config);
+void	print_ascii_i_shadow(t_main *config);
+
 // draw_l.c
-void	print_ascii_l_shadow(int global_offset, t_main *config);
-void	print_ascii_l(int global_offset, t_main *config);
+void	print_ascii_l_shadow(t_main *config);
+void	print_ascii_l(t_main *config);
+
+// draw_n.c
+void	print_ascii_n(t_main *config);
+void	print_ascii_n_shadow(t_main *config);
 
 // draw_o.c
-void	print_ascii_o(int global_offset, t_main *config, int offset);
-void	print_ascii_o_end(int global_offset, t_main *config, int offset);
-void	print_ascii_o_shadow(int global_offset, t_main *config, int offset);
+void	print_ascii_o(t_main *config, int offset);
+void	print_ascii_o_end(t_main *config, int offset);
+void	print_ascii_o_shadow(t_main *config, int offset);
 
 // draw_pixel_art.c
 void	print_ascii_art_pixel(t_main *config, int x, int y, int color);
-void	print_limits_pixel_art(t_main *config);
+int		print_ascii_get_offset(t_main *config, int length);
 void	print_ascii_art_loose(t_main *config);
+void	print_ascii_art_win(t_main *config);
 
 // draw_s.c
-void	print_ascci_s_mid(int global_offset, t_main *config);
-void	print_ascii_s(int global_offset, t_main *config);
-void	print_ascii_s_shadow(int global_offset, t_main *config);
+void	print_ascii_s_mid(t_main *config);
+void	print_ascii_s(t_main *config);
+void	print_ascii_s_shadow(t_main *config);
 
 // draw_str.2.c
 void	print_continue(t_main *config);
@@ -238,6 +250,10 @@ void	print_step_total(t_main *config);
 void	print_close(t_main *config);
 void	print_retry(t_main *config);
 void	print_before_win_loose(t_main *config);
+
+// draw_w.c
+void	print_ascii_w_shadow(t_main *config);
+void	print_ascii_w(t_main *config);
 
 // free.2.c
 void	free_texture_walls(t_main *config);
@@ -314,6 +330,7 @@ void	parse_wall(t_main *config);
 
 // so_long.c
 int		move_win(t_main *config, int x, int y);
+void	post_game(t_main *config);
 
 /* ########################################################################## */
 

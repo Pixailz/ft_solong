@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 05:25:37 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 08:31:15 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 02:39:18 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,20 @@ int	draw_map(t_main *config)
 
 	i = 0;
 	j = 0;
-	while (i < config->height)
+	if (config->p_win)
+		post_game(config);
+	else
 	{
-		while (j < config->width)
+		while (i < config->height)
 		{
-			draw_block(config, i + 1, j + 1);
-			j++;
+			while (j < config->width)
+			{
+				draw_block(config, i + 1, j + 1);
+				j++;
+			}
+			j = 0;
+			i++;
 		}
-		j = 0;
-		i++;
 	}
 	usleep(1000000 / FPS);
 	return (1);

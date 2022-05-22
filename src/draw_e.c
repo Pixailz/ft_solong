@@ -6,13 +6,13 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 20:51:02 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/21 21:39:14 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 02:52:06 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_ascii_e_end(int global_offset, t_main *config)
+void	print_ascii_e_end(t_main *config)
 {
 	int	i;
 	int	j;
@@ -24,8 +24,7 @@ void	print_ascii_e_end(int global_offset, t_main *config)
 		while (j < 10)
 		{
 			if (j < 2 || (j > 3 && j < 6) || j > 7)
-				print_ascii_art_pixel(config, 35 + i + global_offset, j + 1, \
-																		RED);
+				print_ascii_art_pixel(config, 35 + i, j + 1, RED);
 			j++;
 		}
 		j = 0;
@@ -33,7 +32,7 @@ void	print_ascii_e_end(int global_offset, t_main *config)
 	}
 }
 
-void	print_ascii_e(int global_offset, t_main *config)
+void	print_ascii_e(t_main *config)
 {
 	int	i;
 	int	j;
@@ -44,30 +43,30 @@ void	print_ascii_e(int global_offset, t_main *config)
 	{
 		while (j < 10)
 		{
-			print_ascii_art_pixel(config, 33 + i + global_offset, j++ + 1, RED);
+			print_ascii_art_pixel(config, 33 + i, j++ + 1, RED);
 		}
 		j = 0;
 		i++;
 	}
-	print_ascii_e_end(global_offset, config);
+	print_ascii_e_end(config);
 }
 
-void	print_ascii_e_shadow(int global_offset, t_main *config)
+void	print_ascii_e_shadow(t_main *config)
 {
 	int	i;
 
 	i = 0;
 	while (i < 5)
-		print_ascii_art_pixel(config, 35 + i++ + global_offset, 3, DARK_RED);
-	print_ascii_art_pixel(config, 39 + global_offset, 2, DARK_RED);
-	print_ascii_art_pixel(config, 35 + global_offset, 4, DARK_RED);
+		print_ascii_art_pixel(config, 35 + i++, 3, DARK_RED);
+	print_ascii_art_pixel(config, 39, 2, DARK_RED);
+	print_ascii_art_pixel(config, 35, 4, DARK_RED);
 	i = 0;
 	while (i < 5)
-		print_ascii_art_pixel(config, 35 + i++ + global_offset, 7, DARK_RED);
-	print_ascii_art_pixel(config, 39 + global_offset, 6, DARK_RED);
-	print_ascii_art_pixel(config, 35 + global_offset, 8, DARK_RED);
+		print_ascii_art_pixel(config, 35 + i++, 7, DARK_RED);
+	print_ascii_art_pixel(config, 39, 6, DARK_RED);
+	print_ascii_art_pixel(config, 35, 8, DARK_RED);
 	i = 0;
 	while (i < 6)
-		print_ascii_art_pixel(config, 34 + i++ + global_offset, 11, DARK_RED);
-	print_ascii_art_pixel(config, 39 + global_offset, 10, DARK_RED);
+		print_ascii_art_pixel(config, 34 + i++, 11, DARK_RED);
+	print_ascii_art_pixel(config, 39, 10, DARK_RED);
 }
