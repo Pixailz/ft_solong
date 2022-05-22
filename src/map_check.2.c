@@ -72,7 +72,6 @@ int	check_move(t_main *config, int x, int y, char next_move)
 	if (next_move == 'K')
 	{
 		duel(config);
-		put_steps(config);
 		return (0);
 	}
 	if (next_move == 'k')
