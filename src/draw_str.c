@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:19:15 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/18 01:45:51 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 12:07:27 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,21 @@ static	void	print_win_step(t_main *config)
 
 void	print_before_win_loose(t_main *config)
 {
+	char	*tmp1;
+	char	*tmp2;
+
 	if (config->p_win == 1)
 		print_win_step(config);
 	else if (config->p_win == -1)
 	{
 		ft_printf("player has loose\n");
 		put_str_log(config, "player has loose", RED);
+		ft_printf("Steps used: %d\n", config->p_step);
+		tmp1 = ft_itoa(config->p_step);
+		tmp2 = ft_strjoin("Steps used: ", tmp1);
+		free(tmp1);
+		put_str_log(config, tmp2, GREEN);
+		free(tmp2);
 		print_step_total(config);
 	}
 	retry_choose(config);
