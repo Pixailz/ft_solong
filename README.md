@@ -8,6 +8,7 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 1. add loose / win screen
 	- finish win ascii art
 2. fix get_offset_ascii_art_h // get_offset_ascii_art_v
+3. replace ascii art mecanism with texture (to fit with the subject)
 
 ### Sanity
 
