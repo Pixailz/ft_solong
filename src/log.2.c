@@ -6,23 +6,11 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:24:22 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 08:16:44 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:18:34 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	put_separator_log(t_main *config)
-{
-	int	i;
-
-	i = 0;
-	while (i < LOG_LENGTH * LOG_FONT_HEIGTH)
-	{
-		mlx_pixel_put(config->mlx, config->win, \
-			(LOG_FONT_WIDTH * LOG_BLOCK_LENGTH) * config->width, i++, WHITE);
-	}
-}
 
 void	put_log_duel_5(t_main *config)
 {

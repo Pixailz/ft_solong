@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:24:22 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 04:34:46 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:18:29 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static	void	put_log_str_defil(t_main *config)
 
 void	put_str_log(t_main *config, char *str, int color)
 {
-	put_separator_log(config);
 	if (config->log->current_pos == LOG_LENGTH)
 		put_log_str_defil(config);
 	ft_strlcpy(config->log->line[config->log->current_pos]->str, str, \

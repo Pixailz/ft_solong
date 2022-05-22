@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 11:12:28 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:18:41 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,7 +295,6 @@ void	pre_init(t_main *config);
 void	init_multiple_map(t_main *config, char **argv);
 
 // log.2.c
-void	put_separator_log(t_main *config);
 void	put_log_duel_5(t_main *config);
 void	put_log_duel_other(t_main *config);
 void	put_log_duel_kill(t_main *config, int x, int y);
