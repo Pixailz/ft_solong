@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 11:05:46 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:29:32 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	init_main(t_main *config)
 	config->nb_enemy = 0;
 	config->nb_door = 0;
 	config->nb_key = 0;
+	config->is_last_frame_printed = 0;
 	if (!config->texture_loaded)
 		init_texture(config);
 	check_map(config);

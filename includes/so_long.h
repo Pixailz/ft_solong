@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 11:18:41 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:30:51 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ typedef struct s_main {
 	int			nb_key;
 	int			nb_figth;
 	int			nb_map;
+	int			is_last_frame_printed;
 	char		**map_str;
 	t_enemy		**enemy;
 	t_log		*log;
