@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 03:33:51 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:32:45 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@
 # define BLUE				0x0000ff
 
 // GAME
-# define DEFAULT_PLAYER_HEALTH	1
+# define DEFAULT_PLAYER_HEALTH	5
 # define DEFAULT_PLAYER_DAMAGE	1
 # define DEFAULT_ENEMY_HEALTH	3
-# define DEFAULT_ENEMY_DAMAGE	1
+# define DEFAULT_ENEMY_DAMAGE	0.25
 
 // ASCII ART
 # define TIME_BETWEEN_PIXEL		0.00
