@@ -3,10 +3,6 @@ https://cdn.intra.42.fr/pdf/pdf/47281/fr.subject.pdf
 
 ## TODO
 
-### ui
-
-1. replace ascii art mecanism with texture (to fit with the subject)
-
 ### Sanity
 
 1. check everything is working fine
