@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:27:05 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/15 17:26:35 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 12:52:58 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	check_move(t_main *config, int x, int y, char next_move)
 	if (next_move == 'K')
 	{
 		duel(config);
+		if (config->p_win)
+			print_before_win_loose(config);
 		return (0);
 	}
 	if (next_move == 'k')

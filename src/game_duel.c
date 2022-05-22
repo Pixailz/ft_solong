@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:57:54 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 12:15:34 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 12:54:01 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ static	void	duel_deal_damage(t_main *config, t_enemy *enemy)
 	config->p_health -= DEFAULT_ENEMY_DAMAGE;
 	enemy->health -= DEFAULT_PLAYER_DAMAGE;
 	config->nb_figth++;
-	if (!config->p_win)
-	{
-		if (config->width == 5)
-			put_log_duel_5(config);
-		else
-			put_log_duel_other(config);
-	}
 	if (enemy->health <= 0)
 	{
 		put_log_duel_kill(config, enemy->pos_x, enemy->pos_y);
@@ -34,7 +27,6 @@ static	void	duel_deal_damage(t_main *config, t_enemy *enemy)
 	{
 		config->map_new[config->p_x][config->p_y] = 'X';
 		config->p_win = -1;
-		print_before_win_loose(config);
 	}
 }
 
@@ -79,4 +71,9 @@ static	void	get_nearby_enemy(t_main *config)
 void	duel(t_main *config)
 {
 	get_nearby_enemy(config);
+	if (config->width == 5)
+		put_log_duel_5(config);
+	else
+		put_log_duel_other(config);
+	put_steps(config);
 }
