@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:57:54 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 08:17:12 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 12:12:19 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,11 @@ static	void	get_nearby_enemy(t_main *config)
 void	duel(t_main *config)
 {
 	get_nearby_enemy(config);
-	if (config->width == 5)
-		put_log_duel_5(config);
-	else
-		put_log_duel_other(config);
+	if (!config->p_win)
+	{
+		if (config->width == 5)
+			put_log_duel_5(config);
+		else
+			put_log_duel_other(config);
+	}
 }
