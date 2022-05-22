@@ -49,7 +49,6 @@ int	print_ascii_get_offset(t_main *config, int length)
 void	print_ascii_art_loose(t_main *config)
 {
 	config->ascii_art_offset = print_ascii_get_offset(config, 5);
-	ft_printf("global_offset: %d\n", config->ascii_art_offset);
 	print_ascii_l(config);
 	print_ascii_l_shadow(config);
 	print_ascii_o(config, 0);
