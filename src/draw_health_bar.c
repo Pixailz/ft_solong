@@ -40,7 +40,7 @@ current_percent)
 		put_health_bar(config, config->textures->health_03, x, y);
 	else if (current_percent > 15)
 		put_health_bar(config, config->textures->health_02, x, y);
-	else if (current_percent > 5)
+	else
 		put_health_bar(config, config->textures->health_01, x, y);
 }
 
