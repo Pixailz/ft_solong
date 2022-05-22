@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 10:36:05 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:12:28 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 // GAME
 # define DEFAULT_PLAYER_HEALTH	5
 # define DEFAULT_PLAYER_DAMAGE	1
-# define DEFAULT_ENEMY_HEALTH	3
+# define DEFAULT_ENEMY_HEALTH	4
 # define DEFAULT_ENEMY_DAMAGE	0.25
 
 // ASCII ART
@@ -210,7 +210,6 @@ void	put_image(t_main *config, void *img, int x, int y);
 int		draw_map(t_main *config);
 
 // draw_e.c
-void	print_ascii_e_end(t_main *config);
 void	print_ascii_e(t_main *config);
 void	print_ascii_e_shadow(t_main *config);
 
@@ -232,17 +231,14 @@ void	print_ascii_n_shadow(t_main *config);
 
 // draw_o.c
 void	print_ascii_o(t_main *config, int offset);
-void	print_ascii_o_end(t_main *config, int offset);
 void	print_ascii_o_shadow(t_main *config, int offset);
 
 // draw_pixel_art.c
-void	print_ascii_art_pixel(t_main *config, int x, int y, int color);
-int		print_ascii_get_offset(t_main *config, int length);
+void	print_ascii_art_pixel(t_main *config, int x, int y, void *img);
 void	print_ascii_art_loose(t_main *config);
 void	print_ascii_art_win(t_main *config);
 
 // draw_s.c
-void	print_ascii_s_mid(t_main *config);
 void	print_ascii_s(t_main *config);
 void	print_ascii_s_shadow(t_main *config);
 

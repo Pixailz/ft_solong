@@ -6,39 +6,25 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 01:54:29 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 10:16:55 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:13:46 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_ascii_art_pixel(t_main *config, int x, int y, int color)
+void	print_ascii_art_pixel(t_main *config, int x, int y, void *img)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < BLOCK_SIZE / PIXEL_LENGTH)
-	{
-		while (j < BLOCK_SIZE / PIXEL_LENGTH)
-		{
-			mlx_pixel_put(config->mlx, config->win,
+	mlx_put_image_to_window(config->mlx, config->win, img, \
 				((x + config->ascii_art_offset) * \
-				(BLOCK_SIZE / PIXEL_LENGTH)) + j, \
+				(BLOCK_SIZE / PIXEL_LENGTH)), \
 				(((y + (config->height / 2)) * \
 				(BLOCK_SIZE / PIXEL_LENGTH))) + \
 				(LOG_LENGTH * LOG_FONT_HEIGTH) + \
-				(PIXEL_LENGTH * ((config->height / 2) - 1)) + i, color);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
+				(PIXEL_LENGTH * ((config->height / 2) - 1)));
 	usleep(1000000 * TIME_BETWEEN_PIXEL);
 }
 
-int	print_ascii_get_offset(t_main *config, int length)
+static	int	print_ascii_get_offset(t_main *config, int length)
 {
 	int	length_in_pixel;
 	int	total_length;
