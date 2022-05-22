@@ -74,6 +74,7 @@ void	print_before_win_loose(t_main *config)
 	{
 		ft_printf("player has loose\n");
 		put_str_log(config, "player has loose", RED);
+		print_step_total(config);
 	}
 	retry_choose(config);
 }
