@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:52 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/22 10:32:45 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:36:05 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,10 @@ typedef struct s_textures {
 	void	*door_between;
 	void	*door_close;
 	void	*key;
+	void	*green_pixel;
+	void	*dark_green_pixel;
+	void	*red_pixel;
+	void	*dark_red_pixel;
 }				t_textures;
 
 typedef struct s_enemy {

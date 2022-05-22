@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:27:47 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/19 12:16:09 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:37:14 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ static	void	init_texture(t_main *config)
 												"res/img/door_between.xpm");
 	config->textures->door_open = texture_load(config, "res/img/door_open.xpm");
 	config->textures->key = texture_load(config, "res/img/key.xpm");
+	config->textures->green_pixel = texture_load(config, \
+													"res/img/green_pixel.xpm");
+	config->textures->dark_green_pixel = texture_load(config, \
+												"res/img/dark_green_pixel.xpm");
+	config->textures->red_pixel = texture_load(config, \
+												"res/img/dark_red_pixel.xpm");
+	config->textures->dark_red_pixel = texture_load(config, \
+												"res/img/dark_red_pixel.xpm");
 }
 
 static	void	init_hook(t_main *config)

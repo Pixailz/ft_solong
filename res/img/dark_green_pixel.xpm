@@ -1,0 +1,8 @@
+/* XPM */
+static char * dark_green_pixel_xpm[] = {
+"4 4 1 1",
+" 	c #008400",
+"    ",
+"    ",
+"    ",
+"    "};

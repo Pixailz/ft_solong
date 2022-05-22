@@ -6,7 +6,7 @@
 /*   By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:30:38 by brda-sil          #+#    #+#             */
-/*   Updated: 2022/05/17 20:42:57 by brda-sil         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:38:16 by brda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ static	void	free_textures(t_main *config)
 	free_texture(config, config->textures->door_between);
 	free_texture(config, config->textures->door_open);
 	free_texture(config, config->textures->key);
+	free_texture(config, config->textures->green_pixel);
+	free_texture(config, config->textures->dark_green_pixel);
+	free_texture(config, config->textures->red_pixel);
+	free_texture(config, config->textures->dark_red_pixel);
 	config->texture_loaded = 0;
 }
 
