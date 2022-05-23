@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 01:36:34 by brda-sil          #+#    #+#              #
-#    Updated: 2022/05/22 11:32:24 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/05/23 22:23:16 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,37 @@ MINI_LIBX		:= $(LIB_DIR)/minilibx-linux/libmlx_Linux.a
 LDFLAGS			:= -Llib/minilibx-linux -L/usr/lib -lXext -lX11 -lm -lbsd -lz
 
 # SRC
-SRC_C			:= $(wildcard $(SRC_DIR)/*.c)
+SRC_C			:= src/game.c \
+				   src/parse.c \
+				   src/draw_o.c \
+				   src/parse_wall.c \
+				   src/draw_i.c \
+				   src/draw_health_bar.c \
+				   src/free.2.c \
+				   src/init_enemy.c \
+				   src/init_multiple_map.c \
+				   src/draw_str.2.c \
+				   src/game_move.c \
+				   src/draw_l.c \
+				   src/map_check.3.c \
+				   src/map_check.2.c \
+				   src/debug.2.c \
+				   src/draw.c \
+				   src/log.c \
+				   src/draw_w.c \
+				   src/draw_pixel_art.c \
+				   src/draw_e.c \
+				   src/log.2.c \
+				   src/debug.c \
+				   src/change_wall.c \
+				   src/map_check.c \
+				   src/draw_str.c \
+				   src/game_duel.c \
+				   src/draw_n.c \
+				   src/free.c \
+				   src/draw_s.c \
+				   src/init.c \
+				   src/so_long.c
 
 # OBJ
 OBJ_C			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC_C:%.c=%.o))
